@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HealthChecks xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
-  <notificationSettings enabled="false" firstRunTime="" periodInHours="24">
+  <notificationSettings enabled="true" xdt:Transform="SetAttributes">
     <notificationMethods>
       <notificationMethod alias="slack" enabled="true" verbosity="Detailed" failureOnly="false" xdt:Locator="Match(alias)" xdt:Transform="InsertIfMissing">
         <settings xdt:Transform="InsertIfMissing">
