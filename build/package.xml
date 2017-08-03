@@ -29,7 +29,7 @@
   <DataTypes />
 
   <Actions>
-    <Action runat="install" undo="true" alias="HealthCheckSlackNotificationMethod.TransformConfig" file="~/config/HealthChecks.config" xdtfile="~/app_plugins/AzureCDNToolkit/install/HealthChecks.config">
+    <Action runat="install" undo="true" alias="HealthCheckSlackNotificationMethod.TransformConfig" file="~/config/HealthChecks.config" xdtfile="~/app_plugins/HealthCheckSlackNotificationMethod/install/HealthChecks.config">
     </Action>
 
   </Actions>

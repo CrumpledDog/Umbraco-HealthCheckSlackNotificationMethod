@@ -327,6 +327,16 @@
     <Analyzer Include="..\..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Our.Umbraco.HCSlackNM.Installer\Our.Umbraco.HCSlackNM.Installer.csproj">
+      <Project>{87f2977f-a6bf-420f-9d3d-0720bed4aacb}</Project>
+      <Name>Our.Umbraco.HCSlackNM.Installer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Our.Umbraco.HCSlackNM\Our.Umbraco.HCSlackNM.csproj">
+      <Project>{020c131c-cb5f-4dab-85b9-a387f2427421}</Project>
+      <Name>Our.Umbraco.HCSlackNM</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -136,8 +136,8 @@
   <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(BuildUmbDir)\bin" />
   <Copy SourceFiles="@(UmbracoOtherBinFiles)" DestinationFolder="$(BuildUmbDir)\bin" />
   <Copy SourceFiles="@(PackageFile)" DestinationFolder="$(BuildUmbDir)" />
-  <Copy SourceFiles="@(HealthChecksXDTInstallFile)" DestinationFolder="$(BuildUmbDir)\App_Plugins\AzureCDNToolkit\Install" />
-  <Copy SourceFiles="@(HealthChecksXDTUninstallFile)" DestinationFolder="$(BuildUmbDir)\App_Plugins\AzureCDNToolkit\Install" />
+  <Copy SourceFiles="@(HealthChecksXDTInstallFile)" DestinationFolder="$(BuildUmbDir)\App_Plugins\HealthCheckSlackNotificationMethod\Install" />
+  <Copy SourceFiles="@(HealthChecksXDTUninstallFile)" DestinationFolder="$(BuildUmbDir)\App_Plugins\HealthCheckSlackNotificationMethod\Install" />
 
     <!--NuGet -->
   <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(BuildNuGetDir)\lib\net45" />

@@ -16,3 +16,5 @@ Both NuGet and Umbraco packages are available.
 |**Pre-release**| [![AppVeyor Artifacts](https://img.shields.io/badge/appveyor-umbraco-orange.svg)](https://ci.appveyor.com/project/JeavonLeopold/HealthCheckSlackNotificationMethod/build/artifacts)
 
 Once installed you will need to **add your settings into the HealthChecks.config** file found in the config folder
+
+![Exmaple](docs/example.png)
