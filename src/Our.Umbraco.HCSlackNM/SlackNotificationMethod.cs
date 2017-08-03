@@ -7,7 +7,7 @@ using Umbraco.Core.Configuration.HealthChecks;
 using Umbraco.Web.HealthCheck;
 using Umbraco.Web.HealthCheck.NotificationMethods;
 
-namespace Our.Umbraco.HCSlackNM
+namespace Our.Umbraco.HealthCheckSlackNotificationMethod
 {
     [HealthCheckNotificationMethod("slack")]
     public class SlackNotificationMethod : NotificationMethodBase, IHealthCheckNotificatationMethod
