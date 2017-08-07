@@ -77,7 +77,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod.Installer
             string strNamespace = "http://schemas.microsoft.com/XML-Document-Transform";
             nsMgr.AddNamespace("xdt", strNamespace);
 
-            XmlNode notificationMethodElement = document.SelectSingleNode($"//Provider[@alias = 'slack']");
+            XmlNode notificationMethodElement = document.SelectSingleNode($"//notificationMethod[@alias = 'slack']");
             if (notificationMethodElement == null)
             {
                 return false;
