@@ -94,7 +94,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod.Installer
             tranformAttr.Value = "Remove";
 
             parameterRemoveElement.Attributes.Append(tranformAttr);
-            parametersElement.InsertBefore(parameterRemoveElement, parametersElement);
+            notificationMethodElement.InsertBefore(parameterRemoveElement, parametersElement);
 
             XmlNodeList parameters = document.SelectNodes($"//notificationMethod[@alias = 'slack']/settings/add");
             if (parameters == null)

@@ -29,6 +29,8 @@ packages/
 
 src/TestSite/Umbraco/*
 src/TestSite/Umbraco_Client/*
+src/TestSite/App_Plugins/HealthCheckSlackNotificationMethod/**
+
 
 # =========================
 # Windows detritus

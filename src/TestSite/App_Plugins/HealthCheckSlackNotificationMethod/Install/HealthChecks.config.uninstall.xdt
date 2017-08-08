@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<HealthChecks xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
-  <notificationSettings>
-    <notificationMethods>
-      <notificationMethod alias="slack" xdt:Locator="Match(alias)" xdt:Transform="Remove">
-      </notificationMethod>
-    </notificationMethods>
-  </notificationSettings>
-</HealthChecks>
