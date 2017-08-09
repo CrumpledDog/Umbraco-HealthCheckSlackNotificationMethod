@@ -32,7 +32,7 @@ Both NuGet and Umbraco packages are available.
 
 |Umbraco Packages  |                  |
 |:-----------------|:-----------------|
-|**Release**|[![Our Umbraco project page](https://img.shields.io/badge/our-umbraco-orange.svg)](https://our.umbraco.org/projects/backoffice-extensions/slack-heath-check-notification/) 
+|**Release**|[![Our Umbraco project page](https://img.shields.io/badge/our-umbraco-orange.svg)](https://our.umbraco.org/projects/backoffice-extensions/slack-health-check-notification/) 
 |**Pre-release**| [![AppVeyor Artifacts](https://img.shields.io/badge/appveyor-umbraco-orange.svg)](https://ci.appveyor.com/project/JeavonLeopold/umbraco-healthcheckslacknotificationmethod/build/artifacts)
 
 Once installed you will need to **add your settings into the HealthChecks.config** file found in the config folder
