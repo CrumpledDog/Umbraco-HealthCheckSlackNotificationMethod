@@ -7,7 +7,7 @@
     <div ng-controller="Loader">
         <div class="row">
             <div class="span1">
-                <img src="/App_Plugins/HealthCheckSlackNotificationMethod/Install/azure-logo-32.png"/>
+                <img src="<%=ResolveUrl("~/App_Plugins/HealthCheckSlackNotificationMethod/Install/slack-health-check-notification-32.png") %>"/>
             </div>
             <div><h4>Umbraco Slack Heath Check Notification Method</h4></div>
         </div>
