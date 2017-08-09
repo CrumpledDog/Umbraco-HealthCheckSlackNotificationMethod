@@ -18,7 +18,7 @@
   <PropertyGroup>
     <PackageName>Our.Umbraco.HealthCheckSlackNotificationMethod</PackageName>
     <MinUmbracoVersion>7.7.0-beta</MinUmbracoVersion>
-    <Readme>HealthCheckSlackNotificationMethod</Readme>
+    <Readme>The package adds a Slack Health Check Notification Method to Umbraco</Readme>
     <AuthorName>Jeavon Leopold</AuthorName>
     <AuthorUrl>https://github.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/graphs/contributors</AuthorUrl>
     <PackageLicenseName>Apache 2.0 license</PackageLicenseName>
@@ -32,7 +32,7 @@
     <Copyright>Copyright &#169; Jeavon Leopold, Crumpled Dog and contributors.</Copyright>
     <Owners>Jeavon Leopold</Owners>
     <Description>The package adds a Slack Health Check Notification Method to Umbraco</Description>
-    <IconUrl>https://raw.githubusercontent.com/CrumpledDog/Umbraco-AzureCDNToolkit/master/build/assets/icon/umbraco-azure-toolkit-128.png</IconUrl>
+    <IconUrl>https://github.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/blob/develop/build/assets/icon/slack-health-check-notification-128.png?raw=true</IconUrl>
     <Tags>umbraco slack notifications</Tags>
     <Language>en-GB</Language>
     <RequireLicenseAcceptance>false</RequireLicenseAcceptance>
