@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{470FA32D
 		build\package.nuspec = build\package.nuspec
 		build\package.proj = build\package.proj
 		build\package.xml = build\package.xml
+		build\readme.txt = build\readme.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Transforms", "Transforms", "{E26FE0B6-B4B4-4EF1-BABC-8F6B83587D9C}"

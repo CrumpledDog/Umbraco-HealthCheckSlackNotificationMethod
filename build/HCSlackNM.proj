@@ -31,7 +31,7 @@
     <PackageId>Our.Umbraco.HealthCheckSlackNotificationMethod</PackageId>
     <Copyright>Copyright &#169; Jeavon Leopold, Crumpled Dog and contributors.</Copyright>
     <Owners>Jeavon Leopold</Owners>
-    <Description>HealthCheckSlackNotificationMethod</Description>
+    <Description>The package adds a Slack Health Check Notification Method to Umbraco</Description>
     <IconUrl>https://raw.githubusercontent.com/CrumpledDog/Umbraco-AzureCDNToolkit/master/build/assets/icon/umbraco-azure-toolkit-128.png</IconUrl>
     <Tags>umbraco slack notifications</Tags>
     <Language>en-GB</Language>
@@ -132,6 +132,7 @@
       <!-- NuGet specific -->
       <SrcFiles Include="$(CoreProjectDir)\**\*.cs" Exclude="$(CoreProjectDir)\obj\**"/>
       <NuSpecFile Include="$(MSBuildProjectDirectory)\package.nuspec" />
+      <NugetReadme Include="$(MSBuildProjectDirectory)\readme.txt" />
     </ItemGroup>
 
   <!-- Umbraco -->
@@ -149,6 +150,7 @@
   <Copy SourceFiles="@(SrcFiles)" DestinationFiles="@(SrcFiles->'$(BuildNuGetDir)\src\%(RecursiveDir)%(Filename)%(Extension)')" />
   <Copy SourceFiles="@(HealthChecksXDTInstallFile)" DestinationFolder="$(BuildNuGetDir)\Content\Config" />
   <Copy SourceFiles="@(NuSpecFile)" DestinationFolder="$(BuildNuGetDir)" />
+  <Copy SourceFiles="@(NugetReadme)" DestinationFolder="$(BuildNuGetDir)" />
 
   </Target>
 
