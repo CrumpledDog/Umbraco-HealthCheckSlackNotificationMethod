@@ -8,6 +8,6 @@ using System.Reflection;
 //      Revision
 //
 
-[assembly: AssemblyVersion("1.1.1.123")]
-[assembly: AssemblyFileVersion("1.1.1.123")]
-[assembly: AssemblyInformationalVersion("1.1.1-alpha-000123")]
+[assembly: AssemblyVersion("2.0.0.123")]
+[assembly: AssemblyFileVersion("2.0.0.123")]
+[assembly: AssemblyInformationalVersion("2.0.0-alpha-000123")]
