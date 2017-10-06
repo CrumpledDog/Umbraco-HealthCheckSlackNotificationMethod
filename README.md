@@ -19,5 +19,7 @@ Both NuGet and Umbraco packages are available.
 
 Once installed you will need to **add your settings into the HealthChecks.config** file found in the config folder
 
+You will need to create a [Slack Incoming Webhook](https://my.slack.com/services/new/incoming-webhook/) and copy the Webhook URL to the config file. 
+
 ![Exmaple](docs/example.png)
 
