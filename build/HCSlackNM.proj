@@ -43,7 +43,7 @@
 
   <!-- PATHS -->
   <PropertyGroup>
-    <BuildConfig>Release</BuildConfig>
+    <BuildConfig>$(CONFIGURATION)</BuildConfig>
     <RootDir>$(MSBuildProjectDirectory)\..</RootDir>
     <BuildDir>$(MSBuildProjectDirectory)\_temp</BuildDir>
     <BuildUmbDir>$(BuildDir)\_umbraco</BuildUmbDir>
@@ -51,6 +51,7 @@
     <ArtifactsDir>$(RootDir)\artifacts</ArtifactsDir>
     <CoreProjectDir>$(RootDir)\src\Our.Umbraco.HCSlackNM</CoreProjectDir>
     <InstallerProjectDir>$(RootDir)\src\Our.Umbraco.HCSlackNM.Installer</InstallerProjectDir>
+
   </PropertyGroup>
 
   <!-- CLEAN -->
