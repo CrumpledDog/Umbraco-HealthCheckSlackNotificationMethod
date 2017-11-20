@@ -41,19 +41,6 @@
     <FileVersion>$(APPVEYOR_BUILD_VERSION)</FileVersion>
   </PropertyGroup>
 
-  <Choose>
-    <When Condition="$(tagged_release_build) == 'false' And $(version_suffix) == 'rtm'">
-      <PropertyGroup>
-        <AbortBuild>true</AbortBuild>
-      </PropertyGroup>
-    </When>
-    <Otherwise>
-      <PropertyGroup>
-        <AbortBuild>false</AbortBuild>
-      </PropertyGroup>
-    </Otherwise>
-  </Choose>
-
   <!-- PATHS -->
   <PropertyGroup>
     <BuildConfig>Release</BuildConfig>
@@ -64,16 +51,10 @@
     <ArtifactsDir>$(RootDir)\artifacts</ArtifactsDir>
     <CoreProjectDir>$(RootDir)\src\Our.Umbraco.HCSlackNM</CoreProjectDir>
     <InstallerProjectDir>$(RootDir)\src\Our.Umbraco.HCSlackNM.Installer</InstallerProjectDir>
-
   </PropertyGroup>
 
-  <!-- TARGETS -->
-  <Target Name="GetProductVersion">
-    <Error Condition="$(AbortBuild) == 'true'" Text="Aborting the build as the version_suffix suffix is set 'rtm' but APPVEYOR_REPO_TAG is not 'true'" />
-  </Target>
-
   <!-- CLEAN -->
-  <Target Name="Clean" DependsOnTargets="GetProductVersion">
+  <Target Name="Clean">
     <RemoveDir Directories="$(BuildDir)" Condition="Exists('$(BuildDir)')" />
     <RemoveDir Directories="$(ArtifactsDir)" Condition="Exists('$(ArtifactsDir)')" />
     <MakeDir Directories="$(BuildDir)" />

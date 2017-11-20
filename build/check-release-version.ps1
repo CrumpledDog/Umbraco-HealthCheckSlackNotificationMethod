@@ -1,6 +1,7 @@
 $tagged=$Env:APPVEYOR_REPO_TAG
 $tag_name=$Env:APPVEYOR_REPO_TAG_NAME
 $version=[Version]$Env:APPVEYOR_BUILD_VERSION
+$branch=$Env:APPVEYOR_REPO_BRANCH
 
 $Env:tagged_release_build = "false"
 
@@ -14,7 +15,7 @@ $suffix = ""
 "APPVEYOR_REPO_TAG:" + $tagged
 "APPVEYOR_REPO_TAG_NAME:" + $tag_name
 
-If ($tagged -eq "true" -and $tag_name.StartsWith("v")){
+If ($tagged -eq "true" -and $tag_name.StartsWith("v") -and $branch -eq "master"){
 
 	# This is to cut out the beta etc
 	if ($tag_name.Contains("-")){
@@ -53,6 +54,7 @@ If ($tagged -eq "true" -and $tag_name.StartsWith("v")){
 
 	}Else{
 		"** Naughty, naughty, very naughty, tagged version: " + $tagged_version.ToString() + " doesn't match build version:" + $version.ToString() + " **"
+		"** If this was intentional you should manually bump the version in appveyor.yml **"
 		$host.SetShouldExit(1)
 	}
 }
