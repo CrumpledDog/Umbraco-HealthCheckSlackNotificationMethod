@@ -14,14 +14,14 @@ IF NOT EXIST "%toolsFolder%" (
 
 IF NOT EXIST "%toolsFolder%vswhere.exe" (
 	ECHO vswhere not found - fetching now
-	nuget install vswhere -Version 2.0.2 -Source nuget.org -OutputDirectory tools
+	nuget install vswhere -Version 2.2.11 -Source nuget.org -OutputDirectory tools
 )
 
 FOR /f "delims=" %%A in ('dir "%toolsFolder%vswhere.*" /b') DO SET "vswhereExePath=%toolsFolder%%%A\"
 MOVE "%vswhereExePath%tools\vswhere.exe" "%toolsFolder%vswhere.exe"
 
 for /f "usebackq tokens=1* delims=: " %%i in (`"%CD%\tools\vswhere.exe" -latest -requires Microsoft.Component.MSBuild`) do (
-  if /i "%%i"=="installationPath" set InstallDir=%%j
+	if /i "%%i"=="installationPath" set InstallDir=%%j
 )
 
 SET VSWherePath="%InstallDir%\MSBuild"
