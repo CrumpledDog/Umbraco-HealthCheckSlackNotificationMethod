@@ -49,9 +49,6 @@ If ($tagged -eq "true" -and $tag_name.StartsWith("v") -and $branch -eq "master")
 		"Envrionment variable 'semver' set:" + $Env:semver
 		"Envrionment variable 'mssemver' set:" + $Env:mssemver
 		"Envrionment variable 'appveyor_version' set:" + $Env:appveyor_version
-
-		$Env:artifact_name = $Env:artifact_name_prefix + '.' + $Env:mssemver + '.zip'
-
 	}Else{
 		"** Naughty, naughty, very naughty, tagged version: " + $tagged_version.ToString() + " doesn't match build version:" + $version.ToString() + " **"
 		"** If this was intentional you should manually bump the version in appveyor.yml **"
