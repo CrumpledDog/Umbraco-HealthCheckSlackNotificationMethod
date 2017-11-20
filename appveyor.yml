@@ -26,8 +26,8 @@ artifacts:
   - path: artifacts\*.nupkg
   - path: artifacts\*.zip
 
-  deploy:
-      # Umbraco MyGet community feed
+deploy:
+  # Umbraco MyGet community feed
   - provider: NuGet
     server: https://www.myget.org/F/umbraco-packages/api/v2/package
     symbol_server: https://www.myget.org/F/umbraco-packages/symbols/api/v2/package
