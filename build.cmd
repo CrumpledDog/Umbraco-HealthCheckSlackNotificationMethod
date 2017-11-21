@@ -2,7 +2,7 @@ ECHO off
 
 SET /P APPVEYOR_BUILD_NUMBER=Please enter a build number (e.g. 134):
 SET /P PACKAGE_VERISON=Please enter your package version (e.g. 1.0.5):
-SET /P UMBRACO_PACKAGE_PRERELEASE_SUFFIX=Please enter your package release suffix or leave empty (e.g. beta):
+SET /P version_suffix=Please enter your package release suffix or leave empty (e.g. beta):
 
 SET /P APPVEYOR_REPO_TAG=If you want to simulate a GitHub tag for a release (e.g. true):
 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Our.Umbraco.HCSlackNM", "src\Our.Umbraco.HCSlackNM\Our.Umbraco.HCSlackNM.csproj", "{020C131C-CB5F-4DAB-85B9-A387F2427421}"
 EndProject
@@ -9,9 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSite", "src\TestSite\Te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{470FA32D-9976-47CA-AD4F-EC414A18043F}"
 	ProjectSection(SolutionItems) = preProject
+		build\appveyor-semver.ps1 = build\appveyor-semver.ps1
 		appveyor.yml = appveyor.yml
 		build-appveyor.cmd = build-appveyor.cmd
 		build.cmd = build.cmd
+		build\check-release-version.ps1 = build\check-release-version.ps1
 		build\HCSlackNM.proj = build\HCSlackNM.proj
 		build\package.nuspec = build\package.nuspec
 		build\package.proj = build\package.proj
@@ -51,5 +53,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E26FE0B6-B4B4-4EF1-BABC-8F6B83587D9C} = {470FA32D-9976-47CA-AD4F-EC414A18043F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2DACFE0A-F699-4F73-BDBA-9FC86ADB358A}
 	EndGlobalSection
 EndGlobal

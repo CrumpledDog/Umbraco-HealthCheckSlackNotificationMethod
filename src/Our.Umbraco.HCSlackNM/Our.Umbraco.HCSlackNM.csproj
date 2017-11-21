@@ -139,8 +139,8 @@
     <Reference Include="ServiceStack.Text, Version=3.9.71.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ServiceStack.Text.3.9.71\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
-    <Reference Include="Slack.Webhooks, Version=0.1.7.18980, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Slack.Webhooks.0.1.7\lib\net40\Slack.Webhooks.dll</HintPath>
+    <Reference Include="Slack.Webhooks, Version=0.1.8.1091, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Slack.Webhooks.0.1.8\lib\net40\Slack.Webhooks.dll</HintPath>
     </Reference>
     <Reference Include="SQLCE4Umbraco, Version=1.0.6470.38241, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\UmbracoCms.Core.7.7.0\lib\net45\SQLCE4Umbraco.dll</HintPath>
@@ -219,7 +219,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\VersionInfo.cs" />
     <Compile Include="SlackNotificationMethod.cs" />
   </ItemGroup>
   <ItemGroup>

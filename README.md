@@ -11,6 +11,7 @@ Both NuGet and Umbraco packages are available.
 |NuGet Packages    |Version           |
 |:-----------------|:-----------------|
 |**Release**|[![NuGet download](http://img.shields.io/nuget/v/Our.Umbraco.HealthCheckSlackNotificationMethod.svg)](https://www.nuget.org/packages/Our.Umbraco.HealthCheckSlackNotificationMethod/)
+|**Pre-release**|[![NuGet download](https://img.shields.io/myget/umbraco-packages/vpre/Our.Umbraco.HealthCheckSlackNotificationMethod.svg)](https://www.myget.org/feed/umbraco-packages/package/nuget/Our.Umbraco.HealthCheckSlackNotificationMethod/)
 
 |Umbraco Packages  |                  |
 |:-----------------|:-----------------|
