@@ -2,6 +2,7 @@ ECHO APPVEYOR_REPO_BRANCH: %APPVEYOR_REPO_BRANCH%
 ECHO APPVEYOR_REPO_TAG: %APPVEYOR_REPO_TAG%
 ECHO APPVEYOR_BUILD_NUMBER : %APPVEYOR_BUILD_NUMBER%
 ECHO APPVEYOR_BUILD_VERSION : %APPVEYOR_BUILD_VERSION%
+ECHO CONFIGURATION : %BCONFIGURATION%
 
 CALL NuGet restore Our.Umbraco.HCSlackNM.sln
 
@@ -14,7 +15,7 @@ IF NOT EXIST "%toolsFolder%" (
 
 IF NOT EXIST "%toolsFolder%vswhere.exe" (
 	ECHO vswhere not found - fetching now
-	nuget install vswhere -Version 2.2.11 -Source nuget.org -OutputDirectory tools
+	nuget install vswhere -Version 2.3.2 -Source nuget.org -OutputDirectory tools
 )
 
 FOR /f "delims=" %%A in ('dir "%toolsFolder%vswhere.*" /b') DO SET "vswhereExePath=%toolsFolder%%%A\"
