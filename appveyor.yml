@@ -12,6 +12,7 @@ branches:
     - develop
     - master
     - feature/buildRework
+    - feature/cloudsupport
 
 environment:
   # Version Suffix
