@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web.Hosting;
 using System.Web.Http;
@@ -67,7 +68,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod.Installer
         /// <param name="xdtPath">The file path.</param>
         /// <param name="newParameters">The parameters</param>
         /// <returns><c>true</c> if the save is sucessful.</returns>
-        internal static bool SaveParametersToHealthChecksXdt(string xdtPath, IList<Parameter> newParameters)
+        internal bool SaveParametersToHealthChecksXdt(string xdtPath, IList<Parameter> newParameters)
         {
             bool result = false;
             XmlDocument document = XmlHelper.OpenAsXmlDocument(xdtPath);
@@ -133,7 +134,15 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod.Installer
                 LogHelper.Error(typeof(InstallerController), message, e);
             }
 
+            SaveUmbracoCloudTransforms(xdtPath);
+
             return result;
+        }
+
+        private void SaveUmbracoCloudTransforms(string xdtPath)
+        {
+            var a = $"{this.healthChecksConfigPath}HealthChecks.Live.xdt.config";
+            File.Copy(xdtPath, a);
         }
 
         /// <summary>
