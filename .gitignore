@@ -3,7 +3,7 @@
 
 #VS 2015 hidden folder
 .vs/*
-build/tools/vswhere.2.0.2
+build/tools/vswhere.2.3.2
 build/tools/vswhere.exe
 
 # User-specific files
