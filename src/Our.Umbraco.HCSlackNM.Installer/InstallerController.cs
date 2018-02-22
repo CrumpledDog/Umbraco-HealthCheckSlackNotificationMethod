@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Hosting;
 using System.Web.Http;
 using System.Xml;
@@ -23,6 +24,8 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod.Installer
     {
         private readonly string healthChecksConfigInstallXdtPath = HostingEnvironment.MapPath($"{Our.Umbraco.HealthCheckSlackNotificationMethod.Installer.Constants.InstallerPath}{Our.Umbraco.HealthCheckSlackNotificationMethod.Installer.Constants.HealthChecksConfigFile}.install.xdt");
         private readonly string healthChecksConfigPath = HostingEnvironment.MapPath($"{Constants.UmbracoConfigPath}{Constants.HealthChecksConfigFile}");
+        private readonly string umbracosConfigPath = HostingEnvironment.MapPath(Constants.UmbracoConfigPath);
+
 
         /// <summary>
         /// Gets the parameters from the XDT transform file.
@@ -141,9 +144,32 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod.Installer
 
         private void SaveUmbracoCloudTransforms(string xdtPath)
         {
-            var a = $"{this.healthChecksConfigPath}HealthChecks.Live.xdt.config";
-            File.Copy(xdtPath, a);
-        }
+            var cloudEnvironment = GetUmbracoCloudEnvironment();
+            if (cloudEnvironment != null)
+            {
+                LogHelper.Info<InstallerController>($"Umbraco Cloud environment ({cloudEnvironment}) installation detected, creating transform files");
+
+                var devTransformFile = $"{this.umbracosConfigPath}HealthChecks.Development.xdt.config";
+                var stagingTransformFile = $"{this.umbracosConfigPath}HealthChecks.Staging.xdt.config";
+                var liveTransformFile = $"{this.umbracosConfigPath}HealthChecks.Live.xdt.config";
+
+                if (!File.Exists(devTransformFile))
+                {
+                    File.Copy(xdtPath, devTransformFile);
+                    LogHelper.Info<InstallerController>($"Created {devTransformFile}");
+                }
+                if (!File.Exists(stagingTransformFile))
+                {
+                    File.Copy(xdtPath, stagingTransformFile);
+                    LogHelper.Info<InstallerController>($"Created {stagingTransformFile}");
+                }
+                if (!File.Exists(liveTransformFile))
+                {
+                    File.Copy(xdtPath, liveTransformFile);
+                    LogHelper.Info<InstallerController>($"Created {liveTransformFile}");
+                }
+            }
+       }
 
         /// <summary>
         /// Gets the parameter collection from the XDT transform.
@@ -218,5 +244,34 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod.Installer
             PackageActions.TransformConfig transformConfig = new PackageActions.TransformConfig();
             return transformConfig.Execute("HealthCheckSlackNotificationMethod.TransformConfig", transFormConfigAction);
         }
+
+        private static UmbracoCloudEnvironment? GetUmbracoCloudEnvironment()
+        {
+            if (HttpContext.Current == null) return null;
+            var currentDirectory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/"));
+            var environmentDirectory = currentDirectory.Parent?.GetDirectories("environment").FirstOrDefault();
+            if (environmentDirectory != null)
+            {
+                var fileNames = (environmentDirectory.GetFiles().Select(x => x.Name)).ToArray();
+
+                if (fileNames.Contains("development"))
+                {
+                    return UmbracoCloudEnvironment.Development;
+                }
+                if (fileNames.Contains("staging"))
+                {
+                    return UmbracoCloudEnvironment.Staging;
+                }
+                if (fileNames.Contains("live"))
+                {
+                    return UmbracoCloudEnvironment.Live;
+                }
+            }
+
+            // this is not Umbraco Cloud
+            return null;
+        }
+
+        private enum UmbracoCloudEnvironment { Development, Staging, Live }
     }
 }
