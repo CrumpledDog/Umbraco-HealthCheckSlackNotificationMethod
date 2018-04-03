@@ -83,7 +83,7 @@
 
       <!-- Umbraco specific -->
       <PackageFile Include="$(MSBuildProjectDirectory)\package.xml" />
-      <UmbracoOtherBinFiles Include="$(InstallerProjectDir)\bin\$(BuildConfig)\Our.Umbraco.HealthCheckSlackNotificationMethod.Installer.dll;$(InstallerProjectDir)\bin\$(BuildConfig)\Microsoft.Web.XmlTransform.dll;$(CoreProjectDir)\bin\$(BuildConfig)\Slack.Webhooks.dll;$(CoreProjectDir)\bin\$(BuildConfig)\RestSharp.dll;$(CoreProjectDir)\bin\$(BuildConfig)\ServiceStack.Text.dll" />
+      <UmbracoOtherBinFiles Include="$(InstallerProjectDir)\bin\$(BuildConfig)\Our.Umbraco.HealthCheckSlackNotificationMethod.Installer.dll;$(InstallerProjectDir)\bin\$(BuildConfig)\Microsoft.Web.XmlTransform.dll;$(CoreProjectDir)\bin\$(BuildConfig)\Slack.Webhooks.dll" />
       <UmbracoInstallerFiles Include="$(InstallerProjectDir)\Configurator\**\*.*"/>
       <UmbracoInstallerLogo Include="$(MSBuildProjectDirectory)\assets\icon\slack-health-check-notification-32.png"/>
 
