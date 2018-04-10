@@ -22,5 +22,8 @@ Once installed you will need to **add your settings into the HealthChecks.config
 
 You will need to create a [Slack Incoming Webhook](https://my.slack.com/services/new/incoming-webhook/) and copy the Webhook URL to the config file. 
 
-![Exmaple](docs/example.png)
+![Example](docs/example.png)
 
+# Credits and references
+
+This project includes [Slack.Webhooks](https://github.com/nerdfury/Slack.Webhooks) which is MIT licensed.
