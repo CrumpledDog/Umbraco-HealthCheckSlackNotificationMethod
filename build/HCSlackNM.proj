@@ -38,7 +38,7 @@
 
   <!-- APPVEYOR PROPERTIES -->
   <PropertyGroup>
-    <FileVersion>$(APPVEYOR_BUILD_VERSION)</FileVersion>
+    <FileVersion>$(mssemver)</FileVersion>
   </PropertyGroup>
 
   <!-- PATHS -->
@@ -83,7 +83,7 @@
 
       <!-- Umbraco specific -->
       <PackageFile Include="$(MSBuildProjectDirectory)\package.xml" />
-      <UmbracoOtherBinFiles Include="$(InstallerProjectDir)\bin\$(BuildConfig)\Our.Umbraco.HealthCheckSlackNotificationMethod.Installer.dll;$(InstallerProjectDir)\bin\$(BuildConfig)\Microsoft.Web.XmlTransform.dll;$(CoreProjectDir)\bin\$(BuildConfig)\Slack.Webhooks.dll;$(CoreProjectDir)\bin\$(BuildConfig)\RestSharp.dll;$(CoreProjectDir)\bin\$(BuildConfig)\ServiceStack.Text.dll" />
+      <UmbracoOtherBinFiles Include="$(InstallerProjectDir)\bin\$(BuildConfig)\Our.Umbraco.HealthCheckSlackNotificationMethod.Installer.dll;$(InstallerProjectDir)\bin\$(BuildConfig)\Microsoft.Web.XmlTransform.dll;$(CoreProjectDir)\bin\$(BuildConfig)\Slack.Webhooks.dll;$(CoreProjectDir)\bin\$(BuildConfig)\Newtonsoft.Json.dll" />
       <UmbracoInstallerFiles Include="$(InstallerProjectDir)\Configurator\**\*.*"/>
       <UmbracoInstallerLogo Include="$(MSBuildProjectDirectory)\assets\icon\slack-health-check-notification-32.png"/>
 
@@ -122,7 +122,7 @@
       WorkingDirectory="$(BuildUmbDir)"
       MinimumRequiredUmbracoVersion="$(MinUmbracoVersion)"
       PackageName="$(PackageName)"
-      PackageVersion="$(mssemver)"
+      PackageVersion="$(FileVersion)"
       AuthorName="$(AuthorName)"
       AuthorUrl="$(AuthorUrl)"
       Readme="$(Readme)"
@@ -144,7 +144,7 @@
       Title="$(PackageName)"
       Description="$(Description)"
       Summary="$(Readme)"
-      Version="$(mssemver)"
+      Version="$(FileVersion)"
       MinimumRequiredUmbracoVersion ="$(MinUmbracoVersion)"
       Authors="$(AuthorName)"
       Owners="$(Owners)"
@@ -173,7 +173,7 @@
     <MSBuild.NuGet.Tasks.Pack NuGetExePath="NuGet.exe"
       ManifestFile="$(BuildNuGetDir)\package.nuspec"
       BasePath="$(BuildNuGetDir)"
-      Version="$(mssemver)"
+      Version="$(FileVersion)"
       OutputDirectory="$(ArtifactsDir)"
       Symbols="true" />
 
