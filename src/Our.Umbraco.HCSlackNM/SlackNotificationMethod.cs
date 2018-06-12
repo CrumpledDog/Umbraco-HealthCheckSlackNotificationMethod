@@ -127,10 +127,28 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
 
                     foreach (var check in result.Value)
                     {
-                        // if more than one result use bullets
+                        // if more than one result use icons as bullets
                         if (result.Value.Count() > 1)
                         {
-                            resultsText += "• ";
+                            resultsText += ":";
+
+                            switch (check.ResultType)
+                            {
+                                case StatusResultType.Success:
+                                    resultsText += "heavy_check_mark";
+                                    break;
+                                case StatusResultType.Info:
+                                    resultsText += "information_source";
+                                    break;
+                                case StatusResultType.Warning:
+                                    resultsText += "warning";
+                                    break;
+                                case StatusResultType.Error:
+                                    resultsText += "X";
+                                    break;
+                            }
+
+                            resultsText += ": ";
                         }
 
                         resultsText = resultsText + RemoveSimpleHtml(check.Message);
