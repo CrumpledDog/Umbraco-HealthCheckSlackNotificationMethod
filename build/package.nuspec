@@ -17,7 +17,7 @@
     <tags></tags>
     <dependencies>
       <dependency id="UmbracoCms.Core" version="0.0.0" />
-      <dependency id="Slack.Webhooks" version="1.0.3" />
+      <dependency id="Slack.Webhooks" version="1.0.5" />
   </dependencies>
   </metadata>
 </package>
