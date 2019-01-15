@@ -33,7 +33,7 @@
     </Action>-->
   </Actions>
 
-  <control>/App_Plugins/HealthCheckSlackNotificationMethod/Install/Configurator/Views/Configure.ascx</control>
+  <!--<control>/App_Plugins/HealthCheckSlackNotificationMethod/Install/Configurator/Views/Configure.ascx</control>-->
 
   <files />
 
