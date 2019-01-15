@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Our.Umbraco.HCSlackNM", "src\Our.Umbraco.HCSlackNM\Our.Umbraco.HCSlackNM.csproj", "{020C131C-CB5F-4DAB-85B9-A387F2427421}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSite", "src\TestSite\TestSite.csproj", "{479C3FC5-8625-4AE8-ACCC-144B7F8376ED}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{470FA32D-9976-47CA-AD4F-EC414A18043F}"
 	ProjectSection(SolutionItems) = preProject
 		build\appveyor-semver.ps1 = build\appveyor-semver.ps1
@@ -27,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Transforms", "Transforms", 
 		build\transforms\HealthChecks.config.uninstall.xdt = build\transforms\HealthChecks.config.uninstall.xdt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Our.Umbraco.HCSlackNM.Installer", "src\Our.Umbraco.HCSlackNM.Installer\Our.Umbraco.HCSlackNM.Installer.csproj", "{87F2977F-A6BF-420F-9D3D-0720BED4AACB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSite", "src\TestSite\TestSite.csproj", "{26CE883D-FA30-47AF-81E6-CCEF62986B84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,14 +37,10 @@ Global
 		{020C131C-CB5F-4DAB-85B9-A387F2427421}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{020C131C-CB5F-4DAB-85B9-A387F2427421}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{020C131C-CB5F-4DAB-85B9-A387F2427421}.Release|Any CPU.Build.0 = Release|Any CPU
-		{479C3FC5-8625-4AE8-ACCC-144B7F8376ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{479C3FC5-8625-4AE8-ACCC-144B7F8376ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{479C3FC5-8625-4AE8-ACCC-144B7F8376ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{479C3FC5-8625-4AE8-ACCC-144B7F8376ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{87F2977F-A6BF-420F-9D3D-0720BED4AACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87F2977F-A6BF-420F-9D3D-0720BED4AACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87F2977F-A6BF-420F-9D3D-0720BED4AACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87F2977F-A6BF-420F-9D3D-0720BED4AACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26CE883D-FA30-47AF-81E6-CCEF62986B84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26CE883D-FA30-47AF-81E6-CCEF62986B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26CE883D-FA30-47AF-81E6-CCEF62986B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26CE883D-FA30-47AF-81E6-CCEF62986B84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

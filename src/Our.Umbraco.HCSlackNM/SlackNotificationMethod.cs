@@ -1,24 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Slack.Webhooks;
 using Umbraco.Core.Configuration.HealthChecks;
+using Umbraco.Core;
+using Umbraco.Core.Logging;
+using Umbraco.Core.Services;
 using Umbraco.Web.HealthCheck;
 using Umbraco.Web.HealthCheck.NotificationMethods;
 
 namespace Our.Umbraco.HealthCheckSlackNotificationMethod
 {
     [HealthCheckNotificationMethod("slack")]
-    public class SlackNotificationMethod : NotificationMethodBase, IHealthCheckNotificatationMethod
+    public class SlackNotificationMethod : NotificationMethodBase
     {
-        public SlackNotificationMethod(bool enabled, bool failureOnly, HealthCheckNotificationVerbosity verbosity,
-                string webHookUrl, string channel, string username)
-            : base(enabled, failureOnly, verbosity)
+        private readonly ILocalizedTextService _textService;
+        private readonly IRuntimeState _runtimeState;
+        private readonly ILogger _logger;
+
+        public SlackNotificationMethod(ILocalizedTextService textService, IRuntimeState runtimeState, ILogger logger)
         {
-            WebHookUrl = webHookUrl;
-            Channel = channel;
-            Username = username;
+            if (Settings == null)
+            {
+                Enabled = false;
+                return;
+            }
+
+            WebHookUrl = Settings["webHookUrl"]?.Value;
+            if (string.IsNullOrWhiteSpace(WebHookUrl))
+            {
+                Enabled = false;
+                return;
+            }
+
+            Channel = Settings["channel"]?.Value;
+            Username = Settings["username"]?.Value;
+
+            _textService = textService ?? throw new ArgumentNullException(nameof(textService));
+            _runtimeState = runtimeState;
+            _logger = logger;
         }
 
         public string WebHookUrl { get; set; }
@@ -27,7 +49,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
 
         public string Username { get; set; }
 
-        public async Task SendAsync(HealthCheckResults results)
+        public override async Task SendAsync(HealthCheckResults results, CancellationToken token)
         {
             if (ShouldSend(results) == false)
             {
