@@ -11,7 +11,7 @@ branches:
   only:
     - develop
     - master
-    - feature/buildRework
+    - feature/temp8
 
 environment:
   # Version Suffix
