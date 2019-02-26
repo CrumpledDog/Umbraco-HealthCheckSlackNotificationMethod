@@ -15,7 +15,7 @@
   <!-- SHARED PROPERTIES -->
   <PropertyGroup>
     <PackageName>Our.Umbraco.HealthCheckSlackNotificationMethod</PackageName>
-    <MinUmbracoVersion>8.0.0-alpha.58.1580</MinUmbracoVersion>
+    <MinUmbracoVersion>8.0.0</MinUmbracoVersion>
     <Readme>This package adds a Slack Health Check Notification Method to Umbraco</Readme>
     <AuthorName>Jeavon Leopold</AuthorName>
     <AuthorUrl>https://github.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/graphs/contributors</AuthorUrl>
