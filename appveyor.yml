@@ -10,7 +10,9 @@ configuration: Release
 branches:
   only:
     - develop
+    - develop-v2
     - master
+    - master-v2
     - feature/temp8
 
 environment:
