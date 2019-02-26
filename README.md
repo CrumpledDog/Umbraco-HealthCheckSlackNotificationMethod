@@ -24,7 +24,7 @@ You will need to create a [Slack Incoming Webhook](https://my.slack.com/services
 
 ## Configuration ##
 
-**v2.0.0-beta1** requires manual configuration. Edit `/config/HealthChecks.config` to add the notification method and enable notifications. You need to replace the settings with your own web hook URL and channel. Your complete config file should look the below:
+**v2.0.0-beta1** requires manual configuration. Edit `/config/HealthChecks.config` to add the notification method and enable notifications. You need to replace the settings with your own web hook URL and channel. Your complete config file should look like the below:
 
 ```xml
 <HealthChecks>
