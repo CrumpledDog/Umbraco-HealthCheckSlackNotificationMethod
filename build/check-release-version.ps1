@@ -15,7 +15,7 @@ $suffix = ""
 "APPVEYOR_REPO_TAG:" + $tagged
 "APPVEYOR_REPO_TAG_NAME:" + $tag_name
 
-If ($tagged -eq "true" -and $tag_name.StartsWith("v") -and (($branch -eq "master") -or ($branch -eq "master-v2"))){
+If ($tagged -eq "true" -and $tag_name.StartsWith("v")){
 
 	# This is to cut out the beta etc
 	if ($tag_name.Contains("-")){
