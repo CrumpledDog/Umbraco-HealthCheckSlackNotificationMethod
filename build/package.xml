@@ -29,11 +29,11 @@
   <DataTypes />
 
   <Actions>
-    <!--<Action runat="install" undo="true" alias="HealthCheckSlackNotificationMethod.TransformConfig" file="~/config/HealthChecks.config" xdtfile="~/app_plugins/HealthCheckSlackNotificationMethod/install/HealthChecks.config">
-    </Action>-->
+    <Action runat="install" undo="true" alias="HealthCheckSlackNotificationMethod.TransformConfig" file="~/config/HealthChecks.config" xdtfile="~/app_plugins/HealthCheckSlackNotificationMethod/install/HealthChecks.config">
+    </Action>
   </Actions>
 
-  <!--<control>/App_Plugins/HealthCheckSlackNotificationMethod/Install/Configurator/Views/Configure.ascx</control>-->
+  <view>/App_Plugins/HealthCheckSlackNotificationMethod/Install/Configurator/Views/configure.htm</view>
 
   <files />
 

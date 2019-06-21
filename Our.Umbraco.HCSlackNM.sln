@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Transforms", "Transforms", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSite", "src\TestSite\TestSite.csproj", "{26CE883D-FA30-47AF-81E6-CCEF62986B84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Our.Umbraco.HCSlackNM.Installer", "src\Our.Umbraco.HCSlackNM.Installer\Our.Umbraco.HCSlackNM.Installer.csproj", "{87F2977F-A6BF-420F-9D3D-0720BED4AACB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{26CE883D-FA30-47AF-81E6-CCEF62986B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26CE883D-FA30-47AF-81E6-CCEF62986B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26CE883D-FA30-47AF-81E6-CCEF62986B84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87F2977F-A6BF-420F-9D3D-0720BED4AACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87F2977F-A6BF-420F-9D3D-0720BED4AACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87F2977F-A6BF-420F-9D3D-0720BED4AACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87F2977F-A6BF-420F-9D3D-0720BED4AACB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

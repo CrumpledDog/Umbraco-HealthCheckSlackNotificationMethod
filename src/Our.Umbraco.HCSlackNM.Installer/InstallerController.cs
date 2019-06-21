@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Hosting;
-using System.Web.Http;
-using System.Xml;
-using Our.Umbraco.HealthCheckSlackNotificationMethod.Installer.Enums;
-using Our.Umbraco.HealthCheckSlackNotificationMethod.Installer.Models;
-using umbraco.cms.businesslogic.packager.standardPackageActions;
-using Umbraco.Core;
-using Umbraco.Core.Logging;
-using Umbraco.Web.Mvc;
-using Umbraco.Web.WebApi;
-
-namespace Our.Umbraco.HealthCheckSlackNotificationMethod.Installer
+﻿namespace Our.Umbraco.HealthCheckSlackNotificationMethod.Installer
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Xml.Linq;
+    using System.Web.Hosting;
+    using System.Web.Http;
+    using System.Xml;
+    using global::Umbraco.Core.Composing;
+    using global::Umbraco.Web.Mvc;
+    using global::Umbraco.Web.WebApi;
+
+    using Enums;
+    using Models;
+
     /// <summary>
     /// The installer controller for managing installer logic.
     /// </summary>
@@ -70,6 +70,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod.Installer
         internal static bool SaveParametersToHealthChecksXdt(string xdtPath, IList<Parameter> newParameters)
         {
             bool result = false;
+
             XmlDocument document = XmlHelper.OpenAsXmlDocument(xdtPath);
 
             // Inset a Parameter element with Xdt remove so that updated values get saved (for upgrades), we don't want this for NuGet packages which is why it's here instead
@@ -130,7 +131,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod.Installer
             {
                 // Log error message
                 string message = "Error saving XDT Parameters: " + e.Message;
-                LogHelper.Error(typeof(InstallerController), message, e);
+                Current.Logger.Error(typeof(InstallerController), message, e);
             }
 
             return result;
@@ -199,7 +200,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod.Installer
         private static bool ExecuteHealthChecksConfigTransform()
         {
             XmlNode transFormConfigAction =
-                helper.parseStringToXmlNode("<Action runat=\"install\" "
+                ParseStringToXmlNode("<Action runat=\"install\" "
                                             + "undo=\"true\" "
                                             + "alias=\"HealthCheckSlackNotificationMethod.TransformConfig\" "
                                             + "file=\"~/Config/HealthChecks.config\" "
@@ -207,7 +208,37 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod.Installer
                                             + "</Action>").FirstChild;
 
             PackageActions.TransformConfig transformConfig = new PackageActions.TransformConfig();
-            return transformConfig.Execute("HealthCheckSlackNotificationMethod.TransformConfig", transFormConfigAction);
+            return transformConfig.Execute("HealthCheckSlackNotificationMethod.TransformConfig", ToXElement(transFormConfigAction));
+        }
+
+        private static XmlNode ParseStringToXmlNode(string value)
+        {
+            var xmlDocument = new XmlDocument();
+            var xmlNode = AddTextNode(xmlDocument, "error", "");
+
+            try
+            {
+                xmlDocument.LoadXml(value);
+                return xmlDocument.SelectSingleNode(".");
+            }
+            catch
+            {
+                return xmlNode;
+            }
+        }
+        private static XmlNode AddTextNode(XmlDocument xmlDocument, string name, string value)
+        {
+            var node = xmlDocument.CreateNode(XmlNodeType.Element, name, "");
+            node.AppendChild(xmlDocument.CreateTextNode(value));
+            return node;
+        }
+        private static XElement ToXElement(XmlNode xmlElement)
+        {
+            using (var nodeReader = new XmlNodeReader(xmlElement))
+            {
+                nodeReader.MoveToContent();
+                return XElement.Load(nodeReader);
+            }
         }
     }
 }
