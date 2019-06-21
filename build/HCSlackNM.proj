@@ -50,8 +50,7 @@
     <BuildNuGetDir>$(BuildDir)\_nuget</BuildNuGetDir>
     <ArtifactsDir>$(RootDir)\artifacts</ArtifactsDir>
     <CoreProjectDir>$(RootDir)\src\Our.Umbraco.HCSlackNM</CoreProjectDir>
-    <!--<InstallerProjectDir>$(RootDir)\src\Our.Umbraco.HCSlackNM.Installer</InstallerProjectDir>-->
-
+    <InstallerProjectDir>$(RootDir)\src\Our.Umbraco.HCSlackNM.Installer</InstallerProjectDir>
   </PropertyGroup>
 
   <!-- CLEAN -->
@@ -67,8 +66,7 @@
   <!-- COMPILE -->
   <Target Name="Compile" DependsOnTargets="Clean">
     <MSBuild Projects="$(CoreProjectDir)\Our.Umbraco.HCSlackNM.csproj" Properties="Configuration=$(BuildConfig)" />
-    <!--<MSBuild Projects="$(InstallerProjectDir)\Our.Umbraco.HCSlackNM.Installer.csproj" Properties="Configuration=$(BuildConfig)" />-->
-
+    <MSBuild Projects="$(InstallerProjectDir)\Our.Umbraco.HCSlackNM.Installer.csproj" Properties="Configuration=$(BuildConfig)" />
   </Target>
 
   <!-- PREPARE FILES -->
@@ -83,9 +81,9 @@
 
       <!-- Umbraco specific -->
       <PackageFile Include="$(MSBuildProjectDirectory)\package.xml" />
-      <!--<UmbracoOtherBinFiles Include="$(InstallerProjectDir)\bin\$(BuildConfig)\Our.Umbraco.HealthCheckSlackNotificationMethod.Installer.dll;$(InstallerProjectDir)\bin\$(BuildConfig)\Microsoft.Web.XmlTransform.dll;$(CoreProjectDir)\bin\$(BuildConfig)\Slack.Webhooks.dll;$(CoreProjectDir)\bin\$(BuildConfig)\Newtonsoft.Json.dll" />-->
-      <UmbracoOtherBinFiles Include="$(CoreProjectDir)\bin\$(BuildConfig)\Slack.Webhooks.dll;$(CoreProjectDir)\bin\$(BuildConfig)\Newtonsoft.Json.dll" />
-      <!--<UmbracoInstallerFiles Include="$(InstallerProjectDir)\Configurator\**\*.*"/>-->
+      <UmbracoOtherBinFiles Include="$(InstallerProjectDir)\bin\$(BuildConfig)\Our.Umbraco.HealthCheckSlackNotificationMethod.Installer.dll;$(InstallerProjectDir)\bin\$(BuildConfig)\Microsoft.Web.XmlTransform.dll;$(CoreProjectDir)\bin\$(BuildConfig)\Slack.Webhooks.dll;$(CoreProjectDir)\bin\$(BuildConfig)\Newtonsoft.Json.dll" />
+      <!--<UmbracoOtherBinFiles Include="$(CoreProjectDir)\bin\$(BuildConfig)\Slack.Webhooks.dll;$(CoreProjectDir)\bin\$(BuildConfig)\Newtonsoft.Json.dll" />-->
+      <UmbracoInstallerFiles Include="$(InstallerProjectDir)\Configurator\**\*.*"/>
       <UmbracoInstallerLogo Include="$(MSBuildProjectDirectory)\assets\icon\slack-health-check-notification-32.png"/>
 
       <!-- NuGet specific -->
@@ -100,7 +98,7 @@
   <Copy SourceFiles="@(PackageFile)" DestinationFolder="$(BuildUmbDir)" />
   <Copy SourceFiles="@(HealthChecksXDTInstallFile)" DestinationFolder="$(BuildUmbDir)\App_Plugins\HealthCheckSlackNotificationMethod\Install" />
   <Copy SourceFiles="@(HealthChecksXDTUninstallFile)" DestinationFolder="$(BuildUmbDir)\App_Plugins\HealthCheckSlackNotificationMethod\Install" />
-  <!--<Copy SourceFiles="@(UmbracoInstallerFiles)" DestinationFiles="@(UmbracoInstallerFiles->'$(BuildUmbDir)\App_Plugins\HealthCheckSlackNotificationMethod\Install\Configurator\%(RecursiveDir)%(Filename)%(Extension)')" />-->
+  <Copy SourceFiles="@(UmbracoInstallerFiles)" DestinationFiles="@(UmbracoInstallerFiles->'$(BuildUmbDir)\App_Plugins\HealthCheckSlackNotificationMethod\Install\Configurator\%(RecursiveDir)%(Filename)%(Extension)')" />
   <Copy SourceFiles="@(UmbracoInstallerLogo)" DestinationFolder="$(BuildUmbDir)\App_Plugins\HealthCheckSlackNotificationMethod\Install" />
 
     <!--NuGet -->

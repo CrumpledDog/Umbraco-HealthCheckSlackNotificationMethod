@@ -266,6 +266,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Configurator\package.manifest" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
