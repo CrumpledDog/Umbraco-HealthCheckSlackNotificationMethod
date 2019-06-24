@@ -1,9 +1,13 @@
 ﻿<div ng-controller="HCSlackNM.Loader">
   <div class="row">
-    <div class="span1">
-      <img src="/App_Plugins/HealthCheckSlackNotificationMethod/Install/slack-health-check-notification-32.png" />
-    </div>
-    <div><h4>Umbraco Slack Heath Check Notification Method</h4></div>
+    <umb-box>
+      <umb-box-content>
+        <div>
+          <img style="float: right; width: 32px;" src="/App_Plugins/HealthCheckSlackNotificationMethod/Install/slack-health-check-notification-32.png" />
+          <h3 class="bold">Umbraco Slack Heath Check Notification Method</h3>
+        </div>
+      </umb-box-content>
+    </umb-box>
   </div>
   <div class="row">
     <div><hr /></div>
@@ -12,7 +16,7 @@
     <div>
       <fieldset>
         <legend><h4>To complete installation, please enter the required parameters for the Azure storage provider below</h4></legend>
-        <ng-form name="paramForm" class="form-horizontal" role="form">
+        <ng-form name="paramForm" class="form-horizontal" role="form" no-dirty-check>
           <div ng-repeat="param in parameters" class="control-group">
             <label class="control-label" for="{{param.key}}" style="width:160px">{{ capitalizeFirstLetter(param.key) }}</label>
             <div class="controls">
