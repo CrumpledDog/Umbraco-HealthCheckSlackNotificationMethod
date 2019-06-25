@@ -16,7 +16,7 @@
     <div>
       <fieldset>
         <legend><h4>To complete installation, please enter the required parameters for the Azure storage provider below</h4></legend>
-        <ng-form name="paramForm" class="form-horizontal" role="form" no-dirty-check>
+        <ng-form name="paramForm" class="form-horizontal" role="form">
           <div ng-repeat="param in parameters" class="control-group">
             <label class="control-label" for="{{param.key}}" style="width:160px">{{ capitalizeFirstLetter(param.key) }}</label>
             <div class="controls">

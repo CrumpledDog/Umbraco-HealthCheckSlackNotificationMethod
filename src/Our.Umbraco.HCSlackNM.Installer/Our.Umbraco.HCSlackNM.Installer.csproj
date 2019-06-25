@@ -283,4 +283,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>robocopy /e $(ProjectDir)Configurator $(SolutionDir)src\TestSite\App_Plugins\HealthCheckSlackNotificationMethod\Install\Configurator /XO
+IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
+  </PropertyGroup>
 </Project>
