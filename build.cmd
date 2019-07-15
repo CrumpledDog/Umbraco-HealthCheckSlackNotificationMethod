@@ -1,7 +1,5 @@
 ECHO off
 
-powershell ".\build\bootstrap-nuget.ps1"
-
 SET /P APPVEYOR_BUILD_NUMBER=Please enter a build number (e.g. 134):
 SET /P PACKAGE_VERISON=Please enter your package version (e.g. 1.0.5):
 SET /P version_suffix=Please enter your package release suffix or leave empty (e.g. beta):
