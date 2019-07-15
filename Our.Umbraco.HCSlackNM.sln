@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2008
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Our.Umbraco.HCSlackNM", "src\Our.Umbraco.HCSlackNM\Our.Umbraco.HCSlackNM.csproj", "{020C131C-CB5F-4DAB-85B9-A387F2427421}"
 EndProject
@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{470FA32D
 	ProjectSection(SolutionItems) = preProject
 		build\appveyor-semver.ps1 = build\appveyor-semver.ps1
 		appveyor.yml = appveyor.yml
+		build\bootstrap-nuget.ps1 = build\bootstrap-nuget.ps1
 		build-appveyor.cmd = build-appveyor.cmd
 		build.cmd = build.cmd
 		build\check-release-version.ps1 = build\check-release-version.ps1
