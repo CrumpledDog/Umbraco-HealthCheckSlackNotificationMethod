@@ -131,7 +131,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
             };
 
             var umbracoCloudEnvironment = GetUmbracoCloudEnvironment();
-            slackMessage.Username = umbracoCloudEnvironment != null ? $"{Username} - [{Environment.MachineName} - {umbracoCloudEnvironment}]" : $"{Username} - [{Environment.MachineName}]";
+            slackMessage.Username = umbracoCloudEnvironment != null ? $"{Username} - [{umbracoCloudEnvironment}]" : $"{Username} - [{Environment.MachineName}]";
 
             await slackClient.PostAsync(slackMessage);
         }
