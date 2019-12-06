@@ -209,8 +209,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
 
         private static UmbracoCloudEnvironment? GetUmbracoCloudEnvironment()
         {
-            if (HttpContext.Current == null) return null;
-            var currentDirectory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/"));
+            var currentDirectory = new DirectoryInfo(HttpRuntime.AppDomainAppPath);
             var environmentDirectory = currentDirectory.Parent?.GetDirectories("environment").FirstOrDefault();
             if (environmentDirectory != null)
             {
