@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using Slack.Webhooks;
 using Umbraco.Core.Configuration.HealthChecks;
 using Umbraco.Core;
@@ -125,11 +127,13 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
                 Channel = Channel,
                 Attachments = attachments,
                 IconEmoji = icon,
-                Username = string.Format("{0} [{1}]", Username, Environment.MachineName),
                 Text = messageText
             };
-            await slackClient.PostAsync(slackMessage);
 
+            var umbracoCloudEnvironment = GetUmbracoCloudEnvironment();
+            slackMessage.Username = umbracoCloudEnvironment != null ? $"{Username} - [{Environment.MachineName} - {umbracoCloudEnvironment}]" : $"{Username} - [{Environment.MachineName}]";
+
+            await slackClient.PostAsync(slackMessage);
         }
 
         private SlackAttachment GenerateAttachment(Dictionary<string, IEnumerable<HealthCheckStatus>> successResults, string color, string title)
@@ -202,5 +206,34 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
                 .Replace("<em>", "")
                 .Replace("</em>", "");
         }
+
+        private static UmbracoCloudEnvironment? GetUmbracoCloudEnvironment()
+        {
+            if (HttpContext.Current == null) return null;
+            var currentDirectory = new DirectoryInfo(HttpContext.Current.Server.MapPath("~/"));
+            var environmentDirectory = currentDirectory.Parent?.GetDirectories("environment").FirstOrDefault();
+            if (environmentDirectory != null)
+            {
+                var fileNames = (environmentDirectory.GetFiles().Select(x => x.Name)).ToArray();
+
+                if (fileNames.Contains("development"))
+                {
+                    return UmbracoCloudEnvironment.Development;
+                }
+                if (fileNames.Contains("staging"))
+                {
+                    return UmbracoCloudEnvironment.Staging;
+                }
+                if (fileNames.Contains("live"))
+                {
+                    return UmbracoCloudEnvironment.Live;
+                }
+            }
+
+            // this is not Umbraco Cloud
+            return null;
+        }
+
+        private enum UmbracoCloudEnvironment { Development, Staging, Live }
     }
 }
