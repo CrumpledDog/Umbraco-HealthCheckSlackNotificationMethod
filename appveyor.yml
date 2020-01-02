@@ -12,8 +12,8 @@ branches:
     - develop
     - develop-v2
     - master
-    - master-v2
-    - feature/temp8
+    - master-v2    
+    - /v*/
 
 environment:
   # Version Suffix
