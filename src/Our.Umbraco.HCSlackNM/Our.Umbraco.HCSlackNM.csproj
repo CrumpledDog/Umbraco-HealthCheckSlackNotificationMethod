@@ -166,8 +166,8 @@
     <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Serilog.Sinks.File.4.0.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
     </Reference>
-    <Reference Include="Slack.Webhooks, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Slack.Webhooks.1.1.0\lib\net45\Slack.Webhooks.dll</HintPath>
+    <Reference Include="Slack.Webhooks, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Slack.Webhooks.1.1.3\lib\net45\Slack.Webhooks.dll</HintPath>
     </Reference>
     <Reference Include="Superpower, Version=1.0.0.0, Culture=neutral, PublicKeyToken=aec39280ded1b3a7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Superpower.2.0.0\lib\net45\Superpower.dll</HintPath>
