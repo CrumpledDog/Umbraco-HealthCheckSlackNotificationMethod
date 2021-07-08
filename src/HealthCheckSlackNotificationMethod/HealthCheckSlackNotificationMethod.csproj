@@ -19,6 +19,7 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <FileVersion>3.0.0.0</FileVersion>
+        <InformationalVersion>3.0.0.0-alpha.0</InformationalVersion>
     </PropertyGroup>
 
     <ItemGroup>

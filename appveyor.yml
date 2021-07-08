@@ -28,6 +28,7 @@ dotnet_csproj:
   version: '$(semver)'
   assembly_version: '$(appveyor_file_version)'
   file_version: '$(appveyor_file_version)'
+  informational_version: '$(semver)'
 
 build_script:
 - cmd: >-
