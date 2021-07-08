@@ -20,6 +20,8 @@
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
         <FileVersion>3.0.0.0</FileVersion>
         <InformationalVersion>3.0.0.0-alpha.0</InformationalVersion>
+        <AssemblyName>Our.Umbraco.HealthCheckSlackNotificationMethod</AssemblyName>
+        <RootNamespace>Our.Umbraco.HealthCheckSlackNotificationMethod</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

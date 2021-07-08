@@ -10,7 +10,7 @@ using Umbraco.Cms.Core.HealthChecks;
 using Umbraco.Cms.Core.HealthChecks.NotificationMethods;
 using Umbraco.Cms.Core.Services;
 
-namespace HealthCheckSlackNotificationMethod
+namespace Our.Umbraco.HealthCheckSlackNotificationMethod
 {
     [HealthCheckNotificationMethod("slack")]
     public class SlackNotificationMethod : NotificationMethodBase
