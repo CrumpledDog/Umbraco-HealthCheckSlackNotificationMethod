@@ -20,16 +20,14 @@ environment:
 install:
   - ps: .\build\appveyor-semver.ps1
   - ps: .\build\check-release-version.ps1
-  - ps: Update-AppveyorBuild -Version $Env:appveyor_version
+  - ps: Update-AppveyorBuild -Version $Env:semver
 
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
-  version: '$(appveyor_file_version)'
-  package_version: '$(mssemver)'
+  version: '$(semver)'
   assembly_version: '$(appveyor_file_version)'
   file_version: '$(appveyor_file_version)'
-  informational_version: '$(mssemver)'
 
 build_script:
 - cmd: >-
