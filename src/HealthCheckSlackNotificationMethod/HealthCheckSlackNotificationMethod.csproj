@@ -29,14 +29,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="App_Plugins\HealthCheckSlackNotificationMethod\**\*.*">
-            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-        </Content>
-        <None Include="build\**\*.*">
-            <Pack>True</Pack>
-            <PackagePath>buildTransitive</PackagePath>
-        </None>
         <None Include="slack-health-check-notification-128.png">
           <Pack>True</Pack>
           <PackagePath></PackagePath>

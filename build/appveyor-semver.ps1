@@ -22,3 +22,4 @@ $Env:padded_build_revision = $paddedRevision
 "Envrionment variable 'mssemver' set:" + $Env:mssemver
 "Envrionment variable 'appveyor_version' set:" + $Env:appveyor_version
 "Envrionment variable 'padded_build_revision' set:" + $Env:padded_build_revision
+"Envrionment variable 'appveyor_file_version' set:" + $Env:appveyor_file_version
