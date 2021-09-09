@@ -209,6 +209,24 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
 
         private static UmbracoCloudEnvironment? GetUmbracoCloudEnvironment()
         {
+            // new Cloud has a environment variable we can check
+            var environmentName = Environment.GetEnvironmentVariable("APPSETTING_Umbraco.Cloud.Deploy.EnvironmentName");
+            if (!string.IsNullOrEmpty(environmentName))
+            {
+                if (environmentName.InvariantEquals("development"))
+                {
+                    return UmbracoCloudEnvironment.Development;
+                }
+                if (environmentName.InvariantEquals("staging"))
+                {
+                    return UmbracoCloudEnvironment.Staging;
+                }
+                if (environmentName.InvariantEquals("live"))
+                {
+                    return UmbracoCloudEnvironment.Live;
+                }
+            }
+
             var currentDirectory = new DirectoryInfo(HttpRuntime.AppDomainAppPath);
             var environmentDirectory = currentDirectory.Parent?.GetDirectories("environment").FirstOrDefault();
             if (environmentDirectory != null)
