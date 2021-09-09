@@ -204,7 +204,9 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
             return html.Replace("<strong>", "")
                 .Replace("</strong>", "")
                 .Replace("<em>", "")
-                .Replace("</em>", "");
+                .Replace("</em>", "")
+                .Replace("<p>","")
+                .Replace("</p>","");
         }
 
         private static UmbracoCloudEnvironment? GetUmbracoCloudEnvironment()
