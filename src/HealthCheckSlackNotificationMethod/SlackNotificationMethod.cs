@@ -203,7 +203,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
 
         private static UmbracoCloudEnvironment? GetUmbracoCloudEnvironment()
         {
-            var environmentName = Environment.GetEnvironmentVariable("APPSETTING_Umbraco.Cloud.Deploy.EnvironmentName");
+            var environmentName = Environment.GetEnvironmentVariable("UMBRACO__CLOUD__DEPLOY__ENVIRONMENTNAME");
             if (!string.IsNullOrEmpty(environmentName))
             {
                 if (environmentName.InvariantEquals("development"))
