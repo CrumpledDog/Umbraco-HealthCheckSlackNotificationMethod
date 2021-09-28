@@ -6,10 +6,8 @@ This package adds a Health Check Slack Notification Method to Umbraco v9+ so tha
 
 ## Installation ##
 
-**Currently v3 is available only as beta release**
-
 ```none
-dotnet add package Our.Umbraco.HealthCheckSlackNotificationMethod --prerelease  
+dotnet add package Our.Umbraco.HealthCheckSlackNotificationMethod  
 ```
 
 |NuGet Packages    |Version           |
