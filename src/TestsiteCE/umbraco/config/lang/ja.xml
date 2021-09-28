@@ -14,9 +14,9 @@
     <key alias="createPackage">パッケージの作成</key>
     <key alias="delete">削除</key>
     <key alias="disable">無効</key>
-    <key alias="emptyRecycleBin">ごみ箱を空にする</key>
+    <key alias="emptyrecyclebin">ごみ箱を空にする</key>
     <key alias="exportDocumentType">ドキュメントタイプの書出</key>
-    <key alias="importDocumentType">ドキュメントタイプの読込</key>
+    <key alias="importdocumenttype">ドキュメントタイプの読込</key>
     <key alias="importPackage">パッケージの読み込み</key>
     <key alias="liveEdit">ライブ編集</key>
     <key alias="logout">ログアウト</key>
@@ -33,7 +33,6 @@
     <key alias="sendtopublish">公開に送る</key>
     <key alias="sendToTranslate">翻訳に送る</key>
     <key alias="sort">並べ替え</key>
-    <key alias="toPublish">公開する</key>
     <key alias="translate">翻訳</key>
     <key alias="update">更新</key>
     <key alias="defaultValue">初期値</key>
@@ -90,26 +89,6 @@
     <key alias="styleChoose">スタイルの選択</key>
     <key alias="styleShow">スタイルの表示</key>
     <key alias="tableInsert">表の挿入</key>
-  </area>
-  <area alias="changeDocType">
-    <key alias="changeDocTypeInstruction">ドキュメントタイプを変更するには、まず有効なドキュメントタイプのリストから選択します</key>
-    <key alias="changeDocTypeInstruction2">確認および現在のドキュメントタイプからのマッピングを割り当て、保存します。</key>
-    <key alias="contentRepublished">コンテントは再公開されています</key>
-    <key alias="currentProperty">現在のプロパティ</key>
-    <key alias="currentType">現在のドキュメントタイプ</key>
-    <key alias="docTypeCannotBeChanged">有効な代替タイプが存在しないため変更することができません。選択されたコンテントの親の下に許可されたドキュメントタイプへのみ変更ができます</key>
-    <key alias="docTypeChanged">ドキュメントタイプを変更しました</key>
-    <key alias="mapProperties">プロパティを割り当てる</key>
-    <key alias="mapToProperty">割り当てるプロパティ</key>
-    <key alias="newTemplate">新しいテンプレート</key>
-    <key alias="newType">新しいドキュメントタイプ</key>
-    <key alias="none">なし</key>
-    <key alias="selectedContent">コンテント</key>
-    <key alias="selectNewDocType">ドキュメントタイプを変更する</key>
-    <key alias="successMessage">選択コンテンツのドキュメント タイプは、[新しいタイプ] に変更され、以下のプロパティがマップされました。</key>
-    <key alias="to">から</key>
-    <key alias="validationErrorPropertyWithMoreThanOneMapping">1つ以上のプロパティを割り当てられませんでした。プロパティが定義が重複しています</key>
-    <key alias="validDocTypesNote">有効なドキュメントタイプのみが表示されます</key>
   </area>
   <area alias="content">
     <key alias="isPublished" version="7.2">公開されました</key>
@@ -897,7 +876,6 @@ Runwayをインストールして作られた新しいウェブサイトがど�
     <key alias="contentAllowed">このコンテンツはここに使用できます</key>
     <key alias="clickToEmbed">クリックして埋め込む</key>
     <key alias="clickToInsertImage">クリックして画像を挿入する</key>
-    <key alias="placeholderImageCaption">キャプション...</key>
     <key alias="placeholderWriteHere">ここに記入する...</key>
     <key alias="gridLayouts">レイアウト</key>
     <key alias="gridLayoutsDetail">レイアウトは通常1つまたは2つの異なるレイアウトを必要とする、グリッドエディタの全体的な作業エリアです</key>
@@ -1104,5 +1082,9 @@ Runwayをインストールして作られた新しいウェブサイトがど�
     <key alias="validateAsUrl">URL で検証</key>
     <key alias="enterCustomValidation">... またはカスタム検証を入力</key>
     <key alias="fieldIsMandatory">必須フィールドです</key>
+  </area>
+  <area alias="logViewer">
+    <key alias="selectAllLogLevelFilters">すべて選択</key>
+    <key alias="deselectAllLogLevelFilters">すべての選択を解除</key>
   </area>
 </language>

@@ -9,6 +9,7 @@ using Umbraco.Cms.Core.Configuration.Models;
 using Umbraco.Cms.Core.HealthChecks;
 using Umbraco.Cms.Core.HealthChecks.NotificationMethods;
 using Umbraco.Cms.Core.Services;
+using Umbraco.Extensions;
 
 namespace Our.Umbraco.HealthCheckSlackNotificationMethod
 {
@@ -120,8 +121,8 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
                 Text = messageText
             };
 
-            //var umbracoCloudEnvironment = GetUmbracoCloudEnvironment();
-            //slackMessage.Username = umbracoCloudEnvironment != null ? $"{Username} - [{umbracoCloudEnvironment}]" : $"{Username} - [{Environment.MachineName}]";
+            var umbracoCloudEnvironment = GetUmbracoCloudEnvironment();
+            slackMessage.Username = umbracoCloudEnvironment != null ? $"{Username} - [{umbracoCloudEnvironment}]" : $"{Username} - [{Environment.MachineName}]";
             slackMessage.Username =  $"{Username} - [{Environment.MachineName}]";
 
             await slackClient.PostAsync(slackMessage);
@@ -200,33 +201,30 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
                 .Replace("</p>", "");
         }
 
-        //private static UmbracoCloudEnvironment? GetUmbracoCloudEnvironment()
-        //{
-        //    var currentDirectory = new DirectoryInfo(HttpRuntime.AppDomainAppPath);
-        //    var environmentDirectory = currentDirectory.Parent?.GetDirectories("environment").FirstOrDefault();
-        //    if (environmentDirectory != null)
-        //    {
-        //        var fileNames = (environmentDirectory.GetFiles().Select(x => x.Name)).ToArray();
+        private static UmbracoCloudEnvironment? GetUmbracoCloudEnvironment()
+        {
+            var environmentName = Environment.GetEnvironmentVariable("APPSETTING_Umbraco.Cloud.Deploy.EnvironmentName");
+            if (!string.IsNullOrEmpty(environmentName))
+            {
+                if (environmentName.InvariantEquals("development"))
+                {
+                    return UmbracoCloudEnvironment.Development;
+                }
+                if (environmentName.InvariantEquals("staging"))
+                {
+                    return UmbracoCloudEnvironment.Staging;
+                }
+                if (environmentName.InvariantEquals("live"))
+                {
+                    return UmbracoCloudEnvironment.Live;
+                }
+            }
 
-        //        if (fileNames.Contains("development"))
-        //        {
-        //            return UmbracoCloudEnvironment.Development;
-        //        }
-        //        if (fileNames.Contains("staging"))
-        //        {
-        //            return UmbracoCloudEnvironment.Staging;
-        //        }
-        //        if (fileNames.Contains("live"))
-        //        {
-        //            return UmbracoCloudEnvironment.Live;
-        //        }
-        //    }
+            // this is not Umbraco Cloud
+            return null;
+        }
 
-        //    // this is not Umbraco Cloud
-        //    return null;
-        //}
-
-        //private enum UmbracoCloudEnvironment { Development, Staging, Live }
+        private enum UmbracoCloudEnvironment { Development, Staging, Live }
     }
 }
 
