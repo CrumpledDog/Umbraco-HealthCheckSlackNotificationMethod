@@ -1,4 +1,4 @@
-# Umbraco Slack Heath Check Notification v4 for Umbraco v10 #
+# Umbraco Slack Health Check Notification v4 for Umbraco v10 #
 
 ![Icon](https://github.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/blob/develop/build/assets/icon/slack-health-check-notification-256.png?raw=true)
 
