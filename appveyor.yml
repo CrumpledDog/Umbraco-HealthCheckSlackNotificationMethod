@@ -53,4 +53,4 @@ deploy:
       secure: SASQGWG/4zNns7bwSSsJ5RPvKcKfJsBeEPuw69wsVPA3PO739QmzVtc5VwQwgvbr
     artifact: /.*\.nupkg/
     on:
-      branch: develop-v3
+      branch: develop-v4
