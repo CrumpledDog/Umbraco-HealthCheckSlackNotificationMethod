@@ -47,7 +47,7 @@ Edit `appsettings.json` to add the notification method and enable notifications.
               "Settings": {
                 "webHookUrl": "https://hooks.slack.com/services/xxxxxxxx/xxxxxxxx/xxxxxxxxx",
                 "channel": "#test",
-                "username": "Umbraco v9 Health Check Status"
+                "username": "Umbraco v10 Health Check Status"
               }
             }
           }
