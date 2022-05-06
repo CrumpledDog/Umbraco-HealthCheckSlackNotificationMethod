@@ -9,6 +9,7 @@ branches:
     - develop
     - develop-v2
     - develop-v3
+    - develop-v4
     - master
     - master-v2    
     - /v*/
