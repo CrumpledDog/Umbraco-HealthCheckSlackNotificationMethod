@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <ContentTargetFolders>.</ContentTargetFolders>
         <PackageId>Our.Umbraco.HealthCheckSlackNotificationMethod</PackageId>
         <Title>HealthCheckSlackNotificationMethod</Title>
@@ -26,7 +26,7 @@
 
     <ItemGroup>
         <PackageReference Include="Slack.Webhooks" Version="1.1.5" />
-        <PackageReference Include="Umbraco.Cms.Core" Version="9.0.0" />
+        <PackageReference Include="Umbraco.Cms.Core" Version="10.0.0-rc1" />
     </ItemGroup>
 
     <ItemGroup>

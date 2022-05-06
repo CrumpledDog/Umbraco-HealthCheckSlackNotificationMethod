@@ -21,7 +21,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
         private readonly ILogger<SlackNotificationMethod> _logger;
 
         public SlackNotificationMethod(ILocalizedTextService textService, IRuntimeState runtimeState,
-            ILogger<SlackNotificationMethod> logger, IOptions<HealthChecksSettings> healthChecksSettings
+            ILogger<SlackNotificationMethod> logger, IOptionsMonitor<HealthChecksSettings> healthChecksSettings
         ) : base(healthChecksSettings)
         {
             if (Settings == null)
