@@ -7,7 +7,7 @@
         <Description>This package adds a Slack Health Check Notification Method to Umbraco</Description>
         <Product>Our.Umbraco.HealthCheckSlackNotificationMethod</Product>
         <PackageTags>umbraco plugin package slack notifications umbraco-marketplace</PackageTags>
-        <Version>3.0.0-alpha.0</Version>
+        <Version>4.0.0-alpha.0</Version>
         <Copyright>Jeavon Leopold, Crumpled Dog and contributors</Copyright>
         <Authors>Jeavon Leopold</Authors>
         <Company>Crumpled Dog</Company>
@@ -15,18 +15,17 @@
         <PackageProjectUrl>https://github.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod</PackageProjectUrl>
         <RepositoryUrl>https://github.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod</RepositoryUrl>
         <PackageIcon>slack-health-check-notification-128.png</PackageIcon>
-        <PackageIconUrl />
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <AssemblyVersion>3.0.0.0</AssemblyVersion>
-        <FileVersion>3.0.0.0</FileVersion>
-        <InformationalVersion>3.0.0.0-alpha.0</InformationalVersion>
+        <AssemblyVersion>4.0.0.0</AssemblyVersion>
+        <FileVersion>4.0.0.0</FileVersion>
+        <InformationalVersion>4.0.0.0-alpha.0</InformationalVersion>
         <AssemblyName>Our.Umbraco.HealthCheckSlackNotificationMethod</AssemblyName>
         <RootNamespace>Our.Umbraco.HealthCheckSlackNotificationMethod</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Slack.Webhooks" Version="1.1.5" />
-        <PackageReference Include="Umbraco.Cms.Core" Version="[10.0.0,11.0.0)" />
+        <PackageReference Include="Umbraco.Cms.Core" Version="10.0.0" />
     </ItemGroup>
 
     <ItemGroup>
