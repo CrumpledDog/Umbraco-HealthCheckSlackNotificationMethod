@@ -1,4 +1,4 @@
-version: 4.0.5.{build}
+version: 4.0.6.{build}
 
 os: Visual Studio 2022
 
