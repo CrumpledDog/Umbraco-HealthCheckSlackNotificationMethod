@@ -1,0 +1,13 @@
+{
+    "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+    "Category": "Developer Tools",
+    "Tags": ["Slack", "Health Checks", "Notifications"],
+    "PackageType": "Package",
+    "LicenseTypes": ["Free"],
+    "AuthorDetails": {
+        "Description": "Umbraco MVP, CMS and documentation contributor",
+        "Url": "https://github.com/Jeavon",
+        "ImageUrl": "https://github.com/jeavon.png"
+    },
+    "IssueTrackerUrl": "https://github.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/issues"
+}
