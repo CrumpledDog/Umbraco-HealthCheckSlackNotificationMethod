@@ -17,7 +17,7 @@ dotnet add package Our.Umbraco.HealthCheckSlackNotificationMethod
 
 |NuGet Packages    |Version           |
 |:-----------------|:-----------------|
-|**Release**|[![NuGet download](http://img.shields.io/nuget/vpre/Our.Umbraco.HealthCheckSlackNotificationMethod.svg)](https://www.nuget.org/packages/Our.Umbraco.HealthCheckSlackNotificationMethod/)
+|**Release**|[![NuGet download](https://img.shields.io/nuget/vpre/Our.Umbraco.HealthCheckSlackNotificationMethod.svg)](https://www.nuget.org/packages/Our.Umbraco.HealthCheckSlackNotificationMethod/)
 |**Pre-release**|[![NuGet download](https://img.shields.io/myget/umbraco-packages/vpre/Our.Umbraco.HealthCheckSlackNotificationMethod.svg)](https://www.myget.org/feed/umbraco-packages/package/nuget/Our.Umbraco.HealthCheckSlackNotificationMethod/)
 
 Once installed you will need to **add your settings into the appsettings.json** file
