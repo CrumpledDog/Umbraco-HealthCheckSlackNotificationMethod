@@ -57,7 +57,7 @@ Edit `appsettings.json` to add the notification method and enable notifications.
   }
 ```
 
-![Example](https://github.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/blob/develop-v4/docs/example.png)
+![Example](https://raw.githubusercontent.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/develop-v4/docs/example.png)
 
 # Credits and references
 
