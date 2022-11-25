@@ -21,6 +21,7 @@
         <InformationalVersion>4.0.0.0-alpha.0</InformationalVersion>
         <AssemblyName>Our.Umbraco.HealthCheckSlackNotificationMethod</AssemblyName>
         <RootNamespace>Our.Umbraco.HealthCheckSlackNotificationMethod</RootNamespace>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -29,6 +30,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <None Include="..\..\README.md">
+          <Pack>True</Pack>
+          <PackagePath>\</PackagePath>
+        </None>
         <None Include="slack-health-check-notification-128.png">
           <Pack>True</Pack>
           <PackagePath></PackagePath>
