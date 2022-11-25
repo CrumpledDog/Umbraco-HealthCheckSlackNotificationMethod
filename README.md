@@ -1,6 +1,6 @@
 # Umbraco Slack Health Check Notification v4 for Umbraco v10 & v11 #
 
-![Icon](https://github.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/blob/develop/build/assets/icon/slack-health-check-notification-256.png?raw=true)
+![Icon](https://raw.githubusercontent.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/develop/build/assets/icon/slack-health-check-notification-256.png)
 
 This package adds a Health Check Slack Notification Method to Umbraco v10 & v11 so that the status of Health Checks can be posted to a specific Slack Channel.
 
