@@ -4,7 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Our.Umbraco.HealthCheckSlackNotificationMethod.Extensions;
+using Our.Umbraco.HealthCheckSlackNotificationMethod.Models;
 using Slack.Webhooks;
+using SlackAPI;
 using Umbraco.Cms.Core.Configuration.Models;
 using Umbraco.Cms.Core.HealthChecks;
 using Umbraco.Cms.Core.HealthChecks.NotificationMethods;
@@ -31,7 +34,9 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
             }
 
             WebHookUrl = Settings?["webHookUrl"];
-            if (string.IsNullOrWhiteSpace(WebHookUrl))
+            BotUserOAuthToken = Settings?["botUserOAuthToken"];
+
+            if (string.IsNullOrWhiteSpace(WebHookUrl) && string.IsNullOrWhiteSpace(BotUserOAuthToken))
             {
                 Enabled = false;
                 return;
@@ -47,18 +52,59 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
         public string WebHookUrl { get; set; }
         public string Channel { get; set; }
         public string Username { get; set; }
+        public string BotUserOAuthToken { get; set; }
+
         public override async Task SendAsync(HealthCheckResults results)
         {
             if (ShouldSend(results) == false)
             {
                 return;
             }
+
+            var message = GenerateNotificationMessage(results, Username, Channel);
+
+            await SendAsyncViaApi(message);
+            await SendAsyncViaWebhook(message.ToWebHookNotification());
+        }
+
+        private async Task SendAsyncViaApi(SlackNotificationMessageApi message)
+        {
+
+            if (string.IsNullOrEmpty(BotUserOAuthToken) || string.IsNullOrEmpty(Channel) || string.IsNullOrEmpty(Username))
+            {
+                return;
+            }
+
+            var slackClient = new SlackTaskClient(BotUserOAuthToken);
+
+            var response = await slackClient.PostMessageAsync(message.Channel, message.Message, attachments:message.Attachments.ToArray(), icon_emoji: message.Emoji, botName: message.Username);
+
+        }
+
+        private async Task SendAsyncViaWebhook(SlackNotificationMessageWebHook message)
+        {
             if (string.IsNullOrEmpty(WebHookUrl) || string.IsNullOrEmpty(Channel) || string.IsNullOrEmpty(Username))
             {
                 return;
             }
 
-            var slackClient = new SlackClient(WebHookUrl);
+            var slackClient = new Slack.Webhooks.SlackClient(WebHookUrl);
+
+            var slackMessage = new SlackMessage
+            {
+                Channel = message.Channel,
+                Attachments = message.Attachments,
+                IconEmoji = message.Emoji,
+                Text = message.Message,
+                Username = message.Username
+            };
+
+            var result = await slackClient.PostAsync(slackMessage);
+        }
+
+        private SlackNotificationMessageApi GenerateNotificationMessage(HealthCheckResults results, string userName, string channel)
+        {
+            var notificationMessage = new SlackNotificationMessageApi();
 
             var icon = Emoji.Warning;
             if (results.AllChecksSuccessful)
@@ -71,7 +117,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
             var errorResults = results.GetResultsForStatus(StatusResultType.Error);
             var infoResults = results.GetResultsForStatus(StatusResultType.Info);
 
-            var attachments = new List<SlackAttachment>();
+            var attachments = new List<Attachment>();
 
             var checkStringPural = "Checks";
             var checkString = "Check";
@@ -113,23 +159,23 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
                 messageText = string.Format("{0} Health {1} failed and {2}", errorResults.Count, errorResults.Count > 1 ? checkStringPural : checkString, messageText);
             }
 
-            var slackMessage = new SlackMessage
-            {
-                Channel = Channel,
-                Attachments = attachments,
-                IconEmoji = icon,
-                Text = messageText
-            };
-
             var umbracoCloudEnvironment = GetUmbracoCloudEnvironment();
-            slackMessage.Username = umbracoCloudEnvironment != null ? $"{Username} - [{umbracoCloudEnvironment}]" : $"{Username} - [{Environment.MachineName}]";
+            var fullUsername = umbracoCloudEnvironment != null ? $"{userName} - [{umbracoCloudEnvironment}]" : $"{userName} - [{Environment.MachineName}]";
 
-            await slackClient.PostAsync(slackMessage);
+
+            notificationMessage.Attachments = attachments;
+            notificationMessage.Message = messageText;
+            notificationMessage.Username = fullUsername;
+            notificationMessage.Channel = channel;
+            notificationMessage.Emoji = icon;
+
+            return notificationMessage;
+
         }
 
-        private SlackAttachment GenerateAttachment(Dictionary<string, IEnumerable<HealthCheckStatus>> successResults, string color, string title)
+        private Attachment GenerateAttachment(Dictionary<string, IEnumerable<HealthCheckStatus>> successResults, string color, string title)
         {
-            var slackFields = new List<SlackField>();
+            var slackFields = new List<Field>();
             foreach (var result in successResults)
             {
                 var resultsText = string.Empty;
@@ -177,14 +223,14 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
                         }
                     }
                 }
-                slackFields.Add(new SlackField() { Title = result.Key, Value = resultsText, Short = shortText });
+                slackFields.Add(new Field() {  title = result.Key, value = resultsText, @short = shortText });
             }
 
-            var slackAttachment = new SlackAttachment
+            var slackAttachment = new Attachment
             {
-                Color = color,
-                Title = title,
-                Fields = slackFields
+                color = color,
+                title = title,
+                fields = slackFields.ToArray(),
             };
 
             return slackAttachment;

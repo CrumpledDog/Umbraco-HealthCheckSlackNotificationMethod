@@ -26,6 +26,7 @@
 
     <ItemGroup>
         <PackageReference Include="Slack.Webhooks" Version="1.1.5" />
+        <PackageReference Include="SlackAPI" Version="1.1.14" />
         <PackageReference Include="Umbraco.Cms.Core" Version="10.0.0" />
     </ItemGroup>
 
