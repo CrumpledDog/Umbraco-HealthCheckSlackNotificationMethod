@@ -20,13 +20,17 @@ dotnet add package Our.Umbraco.HealthCheckSlackNotificationMethod
 |**Release**|[![NuGet download](https://img.shields.io/nuget/vpre/Our.Umbraco.HealthCheckSlackNotificationMethod.svg)](https://www.nuget.org/packages/Our.Umbraco.HealthCheckSlackNotificationMethod/)
 |**Pre-release**|[![NuGet download](https://img.shields.io/myget/umbraco-packages/vpre/Our.Umbraco.HealthCheckSlackNotificationMethod.svg)](https://www.myget.org/feed/umbraco-packages/package/nuget/Our.Umbraco.HealthCheckSlackNotificationMethod/)
 
-Once installed you will need to **add your settings into the appsettings.json** file
+Once installed you will need to **add settings into the `appsettings.json`** file
 
-You will need to create a [Slack Incoming Webhook](https://my.slack.com/services/new/incoming-webhook/) and copy the Webhook URL to the `appsettings.json` file. 
+Supported in **v4.1+** Create a Slack [App](https://api.slack.com/apps?new_app=1), once created go to "OAuth & Permissions" and add a "OAuth Scope" with the value `"chat:write.customize"` within the "Bot Token Scopes" section.  If you will be posting to multiple channels from the same App, you may need to also add the `"chat:write.public"` scope. Copy the "Bot User OAuth Token" to the `appsettings.json ` file.
+
+![Slack App](https://raw.githubusercontent.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/develop-v4/docs/slack-app.png)
+
 
 **Or**
 
-Supported in **v4.1+** Create a Slack [App](https://api.slack.com/apps?new_app=1), once created go to "OAuth & Permissions" and add a "OAuth Scope" with the value `"chat:write.customize"` within the "Bot Token Scopes" section.  If you will be posting to multiple channels from the same App, you may need to also add the `"chat:write.public"` scope. Copy the "Bot User OAuth Token" to the `appsettings.json ` file.
+You will need to create a [Slack Incoming Webhook](https://my.slack.com/services/new/incoming-webhook/) and copy the Webhook URL to the `appsettings.json` file. 
+
 
 ## Configuration ##
 
@@ -66,4 +70,4 @@ Edit `appsettings.json` to add the notification method and enable notifications.
 
 # Credits and references
 
-This project includes [Slack.Webhooks](https://github.com/nerdfury/Slack.Webhooks) which is MIT licensed.
+This project includes [Slack.Webhooks](https://github.com/nerdfury/Slack.Webhooks) and [SlackAPI](https://github.com/Inumedia/SlackAPI) both are MIT licensed.
