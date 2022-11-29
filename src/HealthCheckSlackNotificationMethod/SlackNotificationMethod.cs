@@ -33,8 +33,14 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
                 return;
             }
 
-            WebHookUrl = Settings?["webHookUrl"];
-            BotUserOAuthToken = Settings?["botUserOAuthToken"];
+            if (Settings.ContainsKey("webHookUrl"))
+            {
+                WebHookUrl = Settings?["webHookUrl"];
+            }
+            if (Settings.ContainsKey("botUserOAuthToken"))
+            {
+                BotUserOAuthToken = Settings?["botUserOAuthToken"];
+            }
 
             if (string.IsNullOrWhiteSpace(WebHookUrl) && string.IsNullOrWhiteSpace(BotUserOAuthToken))
             {
