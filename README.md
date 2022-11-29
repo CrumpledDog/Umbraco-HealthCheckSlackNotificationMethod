@@ -26,7 +26,7 @@ You will need to create a [Slack Incoming Webhook](https://my.slack.com/services
 
 **Or**
 
-Create a Slack [App](https://api.slack.com/apps?new_app=1), once created go to "OAuth & Permissions" and add a "OAuth Scope" with the value `"chat:write.customize"` within the "Bot Token Scopes" section.  If you will be posting to multiple channels from the same App, you may need to also add the `"chat:write.public"` scope. Copy the "Bot User OAuth Token" to the `appsettings.json ` file.
+Supported in **v4.1+** Create a Slack [App](https://api.slack.com/apps?new_app=1), once created go to "OAuth & Permissions" and add a "OAuth Scope" with the value `"chat:write.customize"` within the "Bot Token Scopes" section.  If you will be posting to multiple channels from the same App, you may need to also add the `"chat:write.public"` scope. Copy the "Bot User OAuth Token" to the `appsettings.json ` file.
 
 ## Configuration ##
 
