@@ -4,9 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Our.Umbraco.HealthCheckSlackNotificationMethod.Extensions;
 using Our.Umbraco.HealthCheckSlackNotificationMethod.Models;
-using Slack.Webhooks;
 using SlackAPI;
 using Umbraco.Cms.Core.Configuration.Models;
 using Umbraco.Cms.Core.HealthChecks;
@@ -33,16 +31,12 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
                 return;
             }
 
-            if (Settings.ContainsKey("webHookUrl"))
-            {
-                WebHookUrl = Settings?["webHookUrl"];
-            }
             if (Settings.ContainsKey("botUserOAuthToken"))
             {
                 BotUserOAuthToken = Settings?["botUserOAuthToken"];
             }
 
-            if (string.IsNullOrWhiteSpace(WebHookUrl) && string.IsNullOrWhiteSpace(BotUserOAuthToken))
+            if (string.IsNullOrWhiteSpace(BotUserOAuthToken))
             {
                 Enabled = false;
                 return;
@@ -55,7 +49,6 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
             _runtimeState = runtimeState;
             _logger = logger;
         }
-        public string WebHookUrl { get; set; }
         public string Channel { get; set; }
         public string Username { get; set; }
         public string BotUserOAuthToken { get; set; }
@@ -70,7 +63,6 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
             var message = GenerateNotificationMessage(results, Username, Channel);
 
             await SendAsyncViaApi(message);
-            await SendAsyncViaWebhook(message.ToWebHookNotification());
         }
 
         private async Task SendAsyncViaApi(SlackNotificationMessageApi message)
@@ -87,35 +79,14 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
 
         }
 
-        private async Task SendAsyncViaWebhook(SlackNotificationMessageWebHook message)
-        {
-            if (string.IsNullOrEmpty(WebHookUrl) || string.IsNullOrEmpty(Channel) || string.IsNullOrEmpty(Username))
-            {
-                return;
-            }
-
-            var slackClient = new Slack.Webhooks.SlackClient(WebHookUrl);
-
-            var slackMessage = new SlackMessage
-            {
-                Channel = message.Channel,
-                Attachments = message.Attachments,
-                IconEmoji = message.Emoji,
-                Text = message.Message,
-                Username = message.Username
-            };
-
-            var result = await slackClient.PostAsync(slackMessage);
-        }
-
         private SlackNotificationMessageApi GenerateNotificationMessage(HealthCheckResults results, string userName, string channel)
         {
             var notificationMessage = new SlackNotificationMessageApi();
 
-            var icon = Emoji.Warning;
+            var icon = ":warning:";
             if (results.AllChecksSuccessful)
             {
-                icon = Emoji.WhiteCheckMark;
+                icon = ":white_check_mark:";
             }
 
             var successResults = results.GetResultsForStatus(StatusResultType.Success);

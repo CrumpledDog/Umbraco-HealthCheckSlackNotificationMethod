@@ -1,10 +1,11 @@
-# Umbraco Slack Health Check Notification v4 for Umbraco v10, v11, v12, v13, v14 & v15 #
+# Umbraco Slack Health Check Notification v5 for Umbraco v17 #
 
 ![Icon](https://raw.githubusercontent.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/develop/build/assets/icon/slack-health-check-notification-256.png)
 
-This package adds a Health Check Slack Notification Method to Umbraco v10, v11, v12, v13, v14 & v15 so that the status of Health Checks can be posted to a specific Slack Channel.
+This package adds a Health Check Slack Notification Method to Umbraco v17 so that the status of Health Checks can be posted to a specific Slack Channel.
 
 If you are looking for earlier versions:
+- [v4 is for Umbraco v10, v11, v12, v13, v14, v15 & v16 with webhook support](https://github.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/tree/develop-v4)
 - [v3 is for Umbraco v9](https://github.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/tree/develop-v3)
 - [v2 is for Umbraco v8](https://github.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/tree/develop-v2)
 - [v1 is for Umbraco v7](https://github.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/tree/develop)
@@ -22,19 +23,14 @@ dotnet add package Our.Umbraco.HealthCheckSlackNotificationMethod
 
 Once installed you will need to **add settings into the `appsettings.json`** file
 
-Supported in **v4.1+** Create a Slack [App](https://api.slack.com/apps?new_app=1), once created go to "OAuth & Permissions" and add a "OAuth Scope" with the value `"chat:write.customize"` within the "Bot Token Scopes" section.  If you will be posting to multiple channels from the same App, you may need to also add the `"chat:write.public"` scope. Copy the "Bot User OAuth Token" to the `appsettings.json ` file.
+Create a Slack [App](https://api.slack.com/apps?new_app=1), once created go to "OAuth & Permissions" and add a "OAuth Scope" with the value `"chat:write.customize"` within the "Bot Token Scopes" section.  If you will be posting to multiple channels from the same App, you may need to also add the `"chat:write.public"` scope. Copy the "Bot User OAuth Token" to the `appsettings.json ` file.
 
-![Slack App](https://raw.githubusercontent.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/develop-v4/docs/slack-app.png)
-
-
-**Or**
-
-You will need to create a [Slack Incoming Webhook](https://my.slack.com/services/new/incoming-webhook/) and copy the Webhook URL to the `appsettings.json` file. 
+![Slack App](https://raw.githubusercontent.com/CrumpledDog/Umbraco-HealthCheckSlackNotificationMethod/develop-v4/docs/slack-app.png) 
 
 
 ## Configuration ##
 
-Edit `appsettings.json` to add the notification method and enable notifications. You need to replace the settings with your own **web hook URL** or **OAuth Token** and channel. Your settings  file should look like the below:
+Edit `appsettings.json` to add the notification method and enable notifications. You need to replace the settings with your own **OAuth Token** and channel. Your settings file should look like the below:
 
 ```json
   "Umbraco": {
@@ -54,7 +50,6 @@ Edit `appsettings.json` to add the notification method and enable notifications.
               "Verbosity": "Detailed",
               "Settings": {
                 "botUserOAuthToken": "xxxx-1111111111-11111111111-abcDEFGhIJ67890",
-                "webHookUrl": "https://hooks.slack.com/services/xxxxxxxx/xxxxxxxx/xxxxxxxxx",
                 "channel": "#test",
                 "username": "Umbraco v10 Health Check Status"
               }
@@ -70,4 +65,4 @@ Edit `appsettings.json` to add the notification method and enable notifications.
 
 # Credits and references
 
-This project includes [Slack.Webhooks](https://github.com/nerdfury/Slack.Webhooks) and [SlackAPI](https://github.com/Inumedia/SlackAPI) both are MIT licensed.
+This project includes [SlackAPI](https://github.com/Inumedia/SlackAPI) which is MIT licensed.

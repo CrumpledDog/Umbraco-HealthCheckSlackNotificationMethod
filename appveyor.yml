@@ -1,4 +1,4 @@
-version: 4.1.1.{build}
+version: 5.0.0.{build}
 
 os: Visual Studio 2022
 
@@ -10,8 +10,9 @@ branches:
     - develop-v2
     - develop-v3
     - develop-v4
+    - develop-v5
     - master
-    - master-v2    
+    - master-v2
     - /v*/
 
 environment:
@@ -22,6 +23,9 @@ install:
   - ps: .\build\appveyor-semver.ps1
   - ps: .\build\check-release-version.ps1
   - ps: Update-AppveyorBuild -Version $Env:semver
+  - ps: |
+      Invoke-WebRequest -Uri 'https://dot.net/v1/dotnet-install.ps1' -UseBasicParsing -OutFile "$env:temp\dotnet-install.ps1"
+      & $env:temp\dotnet-install.ps1 -Architecture x64 -Channel '10.0' -InstallDir "$env:ProgramFiles\dotnet"  
 
 dotnet_csproj:
   patch: true
