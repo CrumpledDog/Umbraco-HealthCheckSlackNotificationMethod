@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Our.Umbraco.HealthCheckSlackNotificationMethod.Models;
-using SlackAPI;
+
 using Umbraco.Cms.Core.Configuration.Models;
 using Umbraco.Cms.Core.HealthChecks;
 using Umbraco.Cms.Core.HealthChecks.NotificationMethods;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Extensions;
+
+using SlackNet;
+using SlackNet.WebApi;
+
+using Our.Umbraco.HealthCheckSlackNotificationMethod.Models;
 
 namespace Our.Umbraco.HealthCheckSlackNotificationMethod
 {
@@ -73,9 +78,18 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
                 return;
             }
 
-            var slackClient = new SlackTaskClient(BotUserOAuthToken);
+            var slackClient = new SlackServiceBuilder()
+                .UseApiToken(BotUserOAuthToken)
+                .GetApiClient();
 
-            var response = await slackClient.PostMessageAsync(message.Channel, message.Message, attachments:message.Attachments.ToArray(), icon_emoji: message.Emoji, botName: message.Username);
+            await slackClient.Chat.PostMessage(new Message
+            {
+                Channel = message.Channel,
+                Text = message.Message,
+                Attachments = message.Attachments,
+                IconEmoji = message.Emoji,
+                Username = message.Username
+            });
 
         }
 
@@ -152,7 +166,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
 
         private Attachment GenerateAttachment(Dictionary<string, IEnumerable<HealthCheckStatus>> successResults, string color, string title)
         {
-            var slackFields = new List<Field>();
+            var slackFields = new List<Models.AttachmentField>();
             foreach (var result in successResults)
             {
                 var resultsText = string.Empty;
@@ -200,15 +214,17 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
                         }
                     }
                 }
-                slackFields.Add(new Field() {  title = result.Key, value = resultsText, @short = shortText });
+                slackFields.Add(new Models.AttachmentField { Title = result.Key, Value = resultsText, Short = shortText });
             }
 
-            var slackAttachment = new Attachment
+            // SlackNet's Attachment serializes fields directly from our POCO objects
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(new 
             {
                 color = color,
                 title = title,
-                fields = slackFields.ToArray(),
-            };
+                fields = slackFields
+            });
+            var slackAttachment = Newtonsoft.Json.JsonConvert.DeserializeObject<Attachment>(json);
 
             return slackAttachment;
         }

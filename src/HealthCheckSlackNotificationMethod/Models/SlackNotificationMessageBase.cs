@@ -7,4 +7,11 @@
         public string Message { get; set; }
         public string Emoji { get; set; }
     }
+
+    internal class AttachmentField
+    {
+        public string Title { get; set; }
+        public string Value { get; set; }
+        public bool Short { get; set; }
+    }
 }

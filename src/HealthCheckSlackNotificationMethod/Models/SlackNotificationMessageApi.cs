@@ -1,4 +1,4 @@
-﻿using SlackAPI;
+﻿using SlackNet;
 using System.Collections.Generic;
 
 namespace Our.Umbraco.HealthCheckSlackNotificationMethod.Models

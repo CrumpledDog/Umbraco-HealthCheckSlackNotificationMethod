@@ -65,4 +65,4 @@ Edit `appsettings.json` to add the notification method and enable notifications.
 
 # Credits and references
 
-This project includes [SlackAPI](https://github.com/Inumedia/SlackAPI) which is MIT licensed.
+This project uses [SlackNet](https://github.com/soxtoby/SlackNet) which is MIT licensed.
