@@ -51,7 +51,7 @@ Edit `appsettings.json` to add the notification method and enable notifications.
               "Settings": {
                 "botUserOAuthToken": "xxxx-1111111111-11111111111-abcDEFGhIJ67890",
                 "channel": "#test",
-                "username": "Umbraco v10 Health Check Status"
+                "username": "Umbraco v17 Health Check Status"
               }
             }
           }
