@@ -218,7 +218,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
             }
 
             // SlackNet's Attachment serializes fields directly from our POCO objects
-            var json = Newtonsoft.Json.JsonConvert.SerializeObject(new 
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(new
             {
                 color = color,
                 title = title,
