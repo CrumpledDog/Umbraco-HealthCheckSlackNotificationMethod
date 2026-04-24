@@ -10,9 +10,9 @@ env:
 
 on:
   push:
-    branches: [ "develop/v5", "release/v5", "beta/v5", "feature/v5/**", "hotfix/v5/**" ]
+    branches: [ "develop/v*", "release/v*", "beta/v*", "feature/v*/**", "hotfix/v*/**" ]
   pull_request:
-    branches: [ "develop/v5", "release/v5", "beta/v5", "feature/v5/**", "hotfix/v5/**" ]
+    branches: [ "develop/v*", "release/v*", "beta/v*", "feature/v*/**", "hotfix/v*/**" ]
   workflow_dispatch:
 
 jobs:
@@ -35,7 +35,7 @@ jobs:
           BRANCH_NAME="${GITHUB_REF#refs/heads/}"
           echo "Current branch: $BRANCH_NAME"
           
-          if [[ "$BRANCH_NAME" == feature/v4/* ]] || [[ "$BRANCH_NAME" == hotfix/v4/* ]]; then
+          if [[ "$BRANCH_NAME" == feature/v*/* ]] || [[ "$BRANCH_NAME" == hotfix/v*/* ]]; then
             # Convert branch name to valid semver prerelease identifier
             PRERELEASE_ID=$(echo "$BRANCH_NAME" | sed 's/\//-/g').alpha
             echo "Adding branch config: $BRANCH_NAME with prerelease: $PRERELEASE_ID"
@@ -48,7 +48,7 @@ jobs:
             echo "Updated .releaserc:"
             cat .releaserc
           else
-            echo "Branch does not match feature/v4/** or hotfix/v4/**, no update needed"
+            echo "Branch does not match feature/v*/** or hotfix/v*/**, no update needed"
           fi
           
       - name: Semantic Release
