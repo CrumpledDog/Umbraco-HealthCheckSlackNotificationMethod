@@ -10,8 +10,6 @@ using Umbraco.Cms.Core.Configuration.Models;
 using Umbraco.Cms.Core.HealthChecks;
 using Umbraco.Cms.Core.HealthChecks.NotificationMethods;
 using Umbraco.Cms.Core.Services;
-using Umbraco.Extensions;
-
 using SlackNet;
 using SlackNet.WebApi;
 
@@ -239,30 +237,17 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
                 .Replace("</p>", "");
         }
 
-        private static UmbracoCloudEnvironment? GetUmbracoCloudEnvironment()
+        private static string? GetUmbracoCloudEnvironment()
         {
             var environmentName = Environment.GetEnvironmentVariable("UMBRACO__CLOUD__DEPLOY__ENVIRONMENTNAME");
             if (!string.IsNullOrEmpty(environmentName))
             {
-                if (environmentName.InvariantEquals("development"))
-                {
-                    return UmbracoCloudEnvironment.Development;
-                }
-                if (environmentName.InvariantEquals("staging"))
-                {
-                    return UmbracoCloudEnvironment.Staging;
-                }
-                if (environmentName.InvariantEquals("live"))
-                {
-                    return UmbracoCloudEnvironment.Live;
-                }
+                return char.ToUpperInvariant(environmentName[0]) + environmentName.Substring(1).ToLowerInvariant();
             }
 
             // this is not Umbraco Cloud
             return null;
         }
-
-        private enum UmbracoCloudEnvironment { Development, Staging, Live }
     }
 }
 
