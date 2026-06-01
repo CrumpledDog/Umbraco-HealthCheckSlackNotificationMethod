@@ -20,9 +20,9 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
     [HealthCheckNotificationMethod("slack")]
     public class SlackNotificationMethod : NotificationMethodBase
     {
-        private readonly ILocalizedTextService _textService;
-        private readonly IRuntimeState _runtimeState;
-        private readonly ILogger<SlackNotificationMethod> _logger;
+        private readonly ILocalizedTextService? _textService;
+        private readonly IRuntimeState? _runtimeState;
+        private readonly ILogger<SlackNotificationMethod>? _logger;
 
         public SlackNotificationMethod(ILocalizedTextService textService, IRuntimeState runtimeState,
             ILogger<SlackNotificationMethod> logger, IOptionsMonitor<HealthChecksSettings> healthChecksSettings
@@ -52,9 +52,9 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
             _runtimeState = runtimeState;
             _logger = logger;
         }
-        public string Channel { get; set; }
-        public string Username { get; set; }
-        public string BotUserOAuthToken { get; set; }
+        public string? Channel { get; set; }
+        public string? Username { get; set; }
+        public string? BotUserOAuthToken { get; set; }
 
         public override async Task SendAsync(HealthCheckResults results)
         {
@@ -91,7 +91,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
 
         }
 
-        private SlackNotificationMessageApi GenerateNotificationMessage(HealthCheckResults results, string userName, string channel)
+        private SlackNotificationMessageApi GenerateNotificationMessage(HealthCheckResults results, string? userName, string? channel)
         {
             var notificationMessage = new SlackNotificationMessageApi();
 
@@ -101,10 +101,10 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
                 icon = ":white_check_mark:";
             }
 
-            var successResults = results.GetResultsForStatus(StatusResultType.Success);
-            var warnResults = results.GetResultsForStatus(StatusResultType.Warning);
-            var errorResults = results.GetResultsForStatus(StatusResultType.Error);
-            var infoResults = results.GetResultsForStatus(StatusResultType.Info);
+            var successResults = results.GetResultsForStatus(StatusResultType.Success) ?? [];
+            var warnResults = results.GetResultsForStatus(StatusResultType.Warning) ?? [];
+            var errorResults = results.GetResultsForStatus(StatusResultType.Error) ?? [];
+            var infoResults = results.GetResultsForStatus(StatusResultType.Info) ?? [];
 
             var attachments = new List<Attachment>();
 
@@ -224,7 +224,7 @@ namespace Our.Umbraco.HealthCheckSlackNotificationMethod
             });
             var slackAttachment = Newtonsoft.Json.JsonConvert.DeserializeObject<Attachment>(json);
 
-            return slackAttachment;
+            return slackAttachment!;
         }
 
         private static string RemoveSimpleHtml(string html)
